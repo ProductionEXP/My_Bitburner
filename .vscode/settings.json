@@ -1,0 +1,15 @@
+{
+    "Lua.workspace.library": [
+        "/BBartlo/My_Bitburner/",
+        "c:/Users/bryce/.vscode/extensions/nameouschangey.lifeboatapi-0.0.32/assets/lua/Common/",
+        "c:/Users/bryce/.vscode/extensions/nameouschangey.lifeboatapi-0.0.32/assets/lua/Microcontroller/",
+        "/BBartlo/My_Bitburner/_build/libs/"
+    ],
+    "lifeboatapi.stormworks.libs.gitLibraries": [
+        {
+            "name": "LifeBoatAPI",
+            "gitUrl": "https://github.com/nameouschangey/Stormworks_LifeBoatAPI_MC.git"
+        }
+    ],
+    "bitburner.authToken": "xwDp4HtNP5FLsnKGThexKbBvfFO17S2gg7+FBx9ZgbTlDDGgZa7btRapDsMWb0dc"
+}
