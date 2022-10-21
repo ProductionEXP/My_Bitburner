@@ -2,8 +2,8 @@
 export async function main(ns) {
 	const target = ns.args[0];                                                                            // Var 1, is the targeted server or the server being attacked by the scripts
 	const server = ns.args[1];                                                                            // Var 2, is the server that the scripts will run on
-	const ram_s = ns.getServerMaxRam(server) - ns.getServerUsedRam(server);     
-	                                //Finds the availibe ram of the server that you plan to run the scripts on
+
+	const ram_s = ns.getServerMaxRam(server) - ns.getServerUsedRam(server);								//Finds the availibe ram of the server that you plan to run the scripts on     
 	const ram_1 = ns.getScriptRam("Full_V2.js") * 5;                                                         //Finds the ammount of ram needed to run the scripts
 	const ram_2 = ns.getScriptRam("Grow_V2.js") * 5;                                                         //|
 	const ram_3 = ns.getScriptRam("Weaken_V2.js") * 5;

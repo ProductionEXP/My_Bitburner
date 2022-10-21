@@ -13,7 +13,7 @@ export async function main(ns) {
 		ns.print('Weaken took ' + ns.tFormat(performance.now() - start) + ' to finish');
 	}
 
-	while (ns.getServerSecurityLevel(target) > securityThresh) {
+	while (ns.getServerSecurityLevel(target) < securityThresh) {
 		ns.print("Idle - Current Server Security Level is: ", ns.getServerSecurityLevel(target), ". Goal was: ", securityThresh);
 		await ns.sleep(10000);
 	}
