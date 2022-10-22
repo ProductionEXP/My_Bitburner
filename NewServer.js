@@ -3,7 +3,7 @@ export async function main(ns) {
 	var ram = ns.args[0];
 	var name = ns.args[1];
 
-	if (getServerMoneyAvailable("home") > ns.getPurchasedServerCost(ram)) {
+	if (ns.getServerMoneyAvailable("home") > ns.getPurchasedServerCost(ram)) {
 		ns.purchaseServer(name, ram);
 		ns.tprint("Purchased a server with ", ram, "Gb. New server is named: ", name);
 	
