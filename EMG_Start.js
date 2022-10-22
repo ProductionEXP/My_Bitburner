@@ -3,9 +3,6 @@ export async function main(ns) {
     const target = ns.args[0];
     const server = ns.args[1];
     const type = ns.args[2];
-
-    const moneyThresh = ns.getServerMaxMoney(target) * 0.5;
-    const securityThresh = ns.getServerMinSecurityLevel(target) + 7.5;
     
     const g_ram = ns.getScriptRam("EMG_G.js");
     const w_ram = ns.getScriptRam("EMG_W.js");

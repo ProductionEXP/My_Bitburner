@@ -1,9 +1,8 @@
 /** @param {NS} ns */
 export async function main(ns) {
 
-    const target = ns.args[1];
-    const server = ns.args[0];
-    const threads = ns.args[2];
+    const target = ns.args[0];
+    const threads = ns.args[1];
 
     if (ns.getServerMoneyAvailable(target) < moneyThresh) {
         ns.print("Growing - Current Server Money is: ", ns.getServerMoneyAvailable(target), ". Goal is: ", moneyThresh);
