@@ -28,6 +28,8 @@ export async function main(ns) {
 
 		ns.run("PortsNNuke.js", 1, target);
 
+		await ns.sleep(500);
+
 		ns.exec("Full_V2.js", server, 5, target);                                                 		//Run the "Full_V2.js" script on the designated server
 		ns.print("Full (Hack, Grow, Weaken) script started to run on ", server, ". Target is ", target)
 		ns.exec("Grow_V2.js", server, 5, target);                                                		//Run the "Grow_V2.js" script on the designated server
