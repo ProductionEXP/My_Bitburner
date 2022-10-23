@@ -1,0 +1,48 @@
+/** @param {NS} ns */
+export async function main(ns) {
+
+	var hnn = ns.args[0];
+	var ram = ns.args[1];
+	var c = ns.args[2];
+	var l = ns.args[3];
+
+	ns.disableLog("ALL");
+
+	while (getPurchaseNodeCost() > ns.getServerMoneyAvailable("home")) {
+		ns.enableLog("print");
+		ns.print("Need more monney before purchasing a new HackNet Node");
+		ns.disableLog("print");
+		await ns.sleep(10000);
+	}
+
+	while (getPurchaseNodeCost() < ns.getServerMoneyAvailable("home")) {
+		await ns.purchaseNode();
+		ns.enableLog("print");
+		ns.print("Purchased new HackNet node, starting upgrade cycles");
+		ns.disableLog("print");
+		await ns.sleep(500);
+	}
+
+	while (getLevelUpgradeCost(hnn, l - 1) > ns.getServerMoneyAvailable("home")) {
+		await ns.upgradeLevel(hnn, l - 1)
+		ns.enableLog("print");
+		ns.print("leveled up to ", l,);
+		ns.disableLog("print");
+	}
+
+	while (getRamUpgradeCost(hnn, ram - 1) > ns.getServerMoneyAvailable("home")) {
+		await ns.upgradeRam(hnn, ram - 1)
+		ns.enableLog("print");
+		ns.print("Incresed ram ", ram, " times.");
+		ns.disableLog("print");
+	}
+
+	while (getCoreUpgradeCost(hnn, c - 1) > ns.getServerMoneyAvailable("home")) {
+		await ns.upgradeCore(hnn, c - 1)
+		ns.enableLog("print");
+		ns.print("Incresed the ammount of cores ", c, " times.");
+		ns.disableLog("print");
+	}
+
+
+}
