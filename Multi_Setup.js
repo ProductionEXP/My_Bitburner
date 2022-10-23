@@ -60,6 +60,8 @@ export async function main(ns) {
         	ns.run("PortsNNuke.js", 1, target6);
 		}
 
+        await ns.sleep(500);
+
         if (target1 != "_") {
             ns.exec("Full_V2.js", server, 5, target1);
             ns.print("Full (Hack, Grow, Weaken) script started to run on ", server, ". Target is ", target1);
