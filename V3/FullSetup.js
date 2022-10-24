@@ -10,6 +10,8 @@ export async function main(ns) {
         const targets = arr.slice(1);   //Slices the ammount of targets
         
 	    const targeta = targets.length; //Finds the ammount of targets
+
+        const serverram = ns.getServerMaxRam(server) - ns.getServerUsedRam(server); //Get server's availibe RAM
         
         const ram_f = ns.getScriptRam("Full_V3.js") + ns.getScriptRam("Grow_V3.js") + ns.getScriptRam("Weaken_V3.js");  //Finds the ammount of ram needed to run the three scripts
 
@@ -19,7 +21,7 @@ export async function main(ns) {
     //Terminal prints (for information)
 
         if (ram_ff*targeta < ram_s) {
-            ns.tprint("RAM used per set of scripts is: ", ram_ff,"Gb. ", targeta," targets, for a total of", ram_ff*targa, "Server has ", ram_s," available.");
+            ns.tprint("RAM used per set of scripts is: ", ram_f,"Gb. ", targeta," targets, for a total of ", ram_f*targeta, ". Server has ", serverram,"Gb available.");
         }
 
     //File Transfers
@@ -50,30 +52,6 @@ export async function main(ns) {
                 ns.print("Weaken script started to run on ", server, ". Target is ", target);
             }
         }
-
-    //Runs scripts fo all scan-analyze 1 servers
-
-        if (targets.find("A:")) {
-
-            const moreTargets = ["n00dles", "foodnstuff", "sigma-cosmetics", "joesguns", "hong-fang-tea", "harakiri-sushi", "iron-gym"]
-
-            ns.tprint("Targets are n00dles, foodnstuff, sigma-cosmetics, joesguns, hong-fang-tea, harakiri-sushi, iron-gym");
-
-            for (const target of moreTargets) {
-                ns.run("PortsNNuke.js", 1, target);
-      
-                ns.exec("Full_V3.js", server, v3t, target);
-                ns.print("Full (Hack, Grow, Weaken) script started to run on ", server, ". Target is ", target);
-                ns.exec("Grow_V3.js", server, v3t, target);
-                ns.print("Grow script started to run on ", server, ". Target is ", target);
-                ns.exec("Weaken_V3.js", server, v3t, target);
-                ns.print("Weaken script started to run on ", server, ". Target is ", target);
-            }
-
-            ns.tprint("New set of scripts running on server A: , targets are n00dles, foodnstuff, sigma-cosmetics, joesguns, hong-fang-tea, harakiri-sushi, iron-gym");
-    
-            await ns.sleep(10000);
-            ns.tprint("T- 10s Till script end")
-        }
+    //Closed script comments line
 }
     
