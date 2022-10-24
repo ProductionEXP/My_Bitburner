@@ -6,15 +6,28 @@ export async function main(ns) {
 
     //Constants
 
-        const server = arr[0];  //What server will the scripts run on
-        const targets = arr.slice(1);   //Slices the ammount of targets
+        const server = arr[0];
+        const targets = arr.slice(1);
         
-	    const targeta = targets.length; //Finds the ammount of targets
-        
-        const ram_f = ns.getScriptRam("Full_V3.js") + ns.getScriptRam("Grow_V3.js") + ns.getScriptRam("Weaken_V3.js");  //Finds the ammount of ram needed to run the three scripts
+	    const targeta = targets.length;
+		const targa = targeta*v3t;
 
-        const v3t = Math.floor(targeta/ram_f);  //Takes targeta (ammount of targets) devides it by the ram that it takes to run the three scripts
-                                                //Then rounds it down, ex. 49.98 beomes 49
+        const ram_s = ns.getServerMaxRam(server) - ns.getServerUsedRam(server);
+        const ram_1 = ns.getScriptRam("Full_V3.js") * targa;
+        const ram_2 = ns.getScriptRam("Grow_V3.js") * targa;
+        const ram_3 = ns.getScriptRam("Weaken_V3.js") * targa;
+        const ram_f = ram_s - ram_1 - ram_2 - ram_3;
+
+        const v3t = Math.floor(ns.getServerMaxRam(server) / ram_f1 + ram_g1 + ram_w1);
+            const ram_f1 = ns.getScriptRam("Full_V3.js") * targeta;
+            const ram_g1 = ns.getScriptRam("Grow_V3.js") * targeta;
+            const ram_w1 = ns.getScriptRam("Weaken_V3.js") * targeta; 
+
+
+        const ram_11 = ns.getScriptRam("Full_V3.js");   
+        const ram_22 = ns.getScriptRam("Grow_V3.js");
+        const ram_33 = ns.getScriptRam("Weaken_V3.js");
+        const ram_ff = ram_11 + ram_22 + ram_33;
 
     //Terminal prints (for information)
 
