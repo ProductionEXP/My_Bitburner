@@ -3,9 +3,9 @@ const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
 const files = ["Grow_V3.js", "Full_V3.js", "Weaken_V3.js", "FullSetup.js", "EMG_G.js", "EMG_W.js", "EMG_Start.js", "NewServer.js", "PortsNNuke.js"];
 
 //Colors
-	const red = "\u001b[38;5;203m";
-	const blue = "\u001b[38;5;116m";
-	const green = "\u001b[38;5;78m";
+	const red = "\u001b[38;5;001m";
+	const blue = "\u001b[38;5;004m";
+	const green = "\u001b[38;5;002m";
 
 export async function main(ns) {
 	const [ram, name] = ns.args;
@@ -21,6 +21,7 @@ export async function main(ns) {
 		ns.purchaseServer(name, max);
 		ns.tprint(`${green}Purchased a server with ${max}Gb. New server is named: ${name}`);
 		ns.scp(files, name, "home");
+		ns.tprint(`${green}New Server named: ${name}, costed ${ns.getPurchasedServerCost(max)}`);
 		return ns.tprint(`${red}Script killed.`);
 	
 	}
@@ -40,6 +41,7 @@ export async function main(ns) {
 	}
 
 	ns.purchaseServer(name, ram);
-	ns.tprint(`${green + "Purchased a server with ", ram, "Gb. New server is named: ", name}`);
+	ns.tprint(`${green}Purchased a server with ${ram}Gb. New server is named: ${name}`);
+	ns.tprint(`${green}New Server named: ${name}, costed ${ns.getPurchasedServerCost(ram)}`);
 	ns.scp(files, name, "home");
 }
