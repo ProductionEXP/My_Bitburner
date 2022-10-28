@@ -16,6 +16,7 @@ V3
     FullSetup.js
     Grow_V3.js
     Info.txt
+    netmap.js
     NewServer.js
     PortsNNuke.js
     Remove_Server.js
