@@ -1,10 +1,7 @@
 Last reset was: 27-10-2022 3:09pm
 Active servers are:
 	Home	- 1024gb
-	A:		- 1024gb	
-    B:      - 1gb (Script broke)
-    C:      - 4.10TB (Script had a cap)
-    C:-0    - 4.10TB (Script broke + Script had a cap)
+	A:		- 1024gb
     E:      - 262.14TB	
 
 Scripts
