@@ -1,0 +1,47 @@
+Last reset was: 29-10-2022 9:58pm
+_______________________________________________
+
+Active servers are:
+	Home	- 131.07TB
+    Cores   - 5
+
+    Other Servers
+        A:      - 8.19TB
+        B:      - 32.77TB 
+        C:      - 32.77TB
+        E:      - 1.05PB
+        F:      - 1.05PB
+        G:      - 1.05PB
+        H:      - 1.05PB
+        I:      - 1.05PB
+        J:      - 1.05PB
+        K:      - 1.05PB
+_______________________________________________
+
+Scripts
+V3
+    EMG
+        EMG_G.js
+        ENG_Start.js
+        EMG_W.js
+
+    Hacking
+        Full_V3.js
+        FullSetup.js
+        Grow_V3.js
+        PortsNNuke.js
+        Weaken_V3.js
+
+    Info
+        Color_Info.js
+        Info.txt
+        netmap.js
+
+    Other    
+        v1.js
+
+    Servers
+        NewServer.js
+        Remove_Server.js
+
+    Stock Market        

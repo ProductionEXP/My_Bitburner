@@ -2,25 +2,27 @@
 export async function main(ns) {
 
     ns.disableLog("ALL");
-    ns.enableLog("print");
 
     //Constants
 
-        const server = arr[0];  //What server will the scripts run on
-        const targets = arr.slice(1);   //Slices the ammount of targets
+        const server = ns.args[0];  //What server will the scripts run on
+        const targets = ns.args.slice(1);   //Slices the ammount of targets
         
 	    const targeta = targets.length; //Finds the ammount of targets
 
         const serverram = ns.getServerMaxRam(server) - ns.getServerUsedRam(server); //Get server's availibe RAM
         
         const ram_f = ns.getScriptRam("Full_V3.js") + ns.getScriptRam("Grow_V3.js") + ns.getScriptRam("Weaken_V3.js");  //Finds the ammount of ram needed to run the three scripts
+            const ram_t = ram_f*targeta;    //Finds the total ammount of ram for all scripts
 
-        const v3t = Math.floor(targeta/ram_f);  //Takes targeta (ammount of targets) devides it by the ram that it takes to run the three scripts
-                                                //Then rounds it down, ex. 49.98 beomes 49
+        const v3t = Math.floor(serverram/ram_t);  //Takes targeta (ammount of targets) devides it by the ram that it takes to run the three scripts
+                                                  //Then rounds it down, ex. 49.98 beomes 49
+        //Color Constants
+            const red = "\u001b[38;5;001m";
 
     //Terminal prints (for information)
 
-        if (ram_ff*targeta < ram_s) {
+        if (ram_t < serverram) {   
             ns.tprint("RAM used per set of scripts is: ", ram_f,"Gb. ", targeta," targets, for a total of ", ram_f*targeta, ". Server has ", serverram,"Gb available.");
         }
 
@@ -28,18 +30,29 @@ export async function main(ns) {
 
         const scripts = ["Full_V3.js","Grow_V3.js","Weaken_V3.js"];    
 
-        for(const server of targets){
-            ns.scp(scripts,server,"home")       
-        }
+            ns.scp(scripts,server,"home");
 
     //Standard Multiple Setup Script
 
-        if (ram_f <= 0) {
-            ns.print("Not enough RAM to run scripts, actively trying to run scripts on ", server, " server.");
-            await ns.sleep(10000);
+        if (ram_t > serverram) {    
+            ns.tprint(`${red}Not enough RAM to run scripts, actively trying to run scripts on ${server} server.`);
+            ns.tprint(`${red}Time Out in 10s`);
+            await ns.sleep(5000);
+            ns.tprint(`${red}Time Out in 5s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 4s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 3s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 2s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 1s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 0s`);
+            return ns.tprint(`${red}Script killed.`);
         }
       
-        if (ram_f < 0) {
+        if (ram_t < serverram) {   
 
             for (const target of targets) {
                 ns.run("PortsNNuke.js", 1, target);
@@ -54,4 +67,3 @@ export async function main(ns) {
         }
     //Closed script comments line
 }
-    
