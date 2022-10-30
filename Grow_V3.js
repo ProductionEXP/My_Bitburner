@@ -11,13 +11,13 @@ export async function main(ns) {
 
         if (ns.getServerMoneyAvailable(target) <= moneyThresh) {
             let start = performance.now();
-            ns.print("Growing - Current Server Money is: ", ns.getServerMoneyAvailable(target), ". Goal is: ", moneyThresh);
+            ns.print("Growing - Current Server Money is: ", Math.floor(ns.getServerMoneyAvailable(target)), ". Goal is: ", moneyThresh);
             await ns.grow(target);
             ns.print('Grow took ' + ns.tFormat(performance.now() - start) + ' to finish');
         }
 
         if (ns.getServerMoneyAvailable(target) > moneyThresh) {
-             ns.print("Idle - Current Server Money is: ", ns.getServerMoneyAvailable(target), ". Goal was: ", moneyThresh);
+             ns.print("Idle - Current Server Money is: ", Math.floor(ns.getServerMoneyAvailable(target)), ". Goal was: ", moneyThresh);
              await ns.sleep(10000);
         }
     }

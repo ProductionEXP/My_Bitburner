@@ -1,25 +1,21 @@
-Last reset was: 27-10-2022 3:09pm
+Last reset was: 29-10-2022 9:58pm
 _______________________________________________
 
 Active servers are:
-	Home	- 65.54TB
-    Cores   - 4
+	Home	- 131.07TB
+    Cores   - 5
 
     Other Servers
-	    A:		- 1.02TB
-        B:      - 262.14TB
-        C:      - 262.14TB
-        D:      - 262.14TB
-        E:      - 262.14TB
+        A:      - 8.19TB
+        B:      - 32.77TB 
+        C:      - 32.77TB
+        E:      - 1.05PB
         F:      - 1.05PB
         G:      - 1.05PB
         H:      - 1.05PB
         I:      - 1.05PB
         J:      - 1.05PB
         K:      - 1.05PB
-        L:      - 1.05PB
-        M:      - 1.05PB
-        N:	    - 1.05PB
 _______________________________________________
 
 Scripts
@@ -48,5 +44,4 @@ V3
         NewServer.js
         Remove_Server.js
 
-    Stock Market
-        
+    Stock Market        

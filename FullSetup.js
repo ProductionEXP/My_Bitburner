@@ -17,10 +17,12 @@ export async function main(ns) {
 
         const v3t = Math.floor(serverram/ram_t);  //Takes targeta (ammount of targets) devides it by the ram that it takes to run the three scripts
                                                   //Then rounds it down, ex. 49.98 beomes 49
+        //Color Constants
+            const red = "\u001b[38;5;001m";
 
     //Terminal prints (for information)
 
-        if (ram_t < serverram) {    //If there is not enough ram for scripts, tprint will not run
+        if (ram_t < serverram) {   
             ns.tprint("RAM used per set of scripts is: ", ram_f,"Gb. ", targeta," targets, for a total of ", ram_f*targeta, ". Server has ", serverram,"Gb available.");
         }
 
@@ -32,12 +34,25 @@ export async function main(ns) {
 
     //Standard Multiple Setup Script
 
-        if (ram_t > serverram) {    //If there is not enough ram for scripts, tprint will print text below
-            ns.tprint("Not enough RAM to run scripts, actively trying to run scripts on ", server, " server.");
-            await ns.sleep(10000);
+        if (ram_t > serverram) {    
+            ns.tprint(`${red}Not enough RAM to run scripts, actively trying to run scripts on ${server} server.`);
+            ns.tprint(`${red}Time Out in 10s`);
+            await ns.sleep(5000);
+            ns.tprint(`${red}Time Out in 5s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 4s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 3s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 2s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 1s`);
+            await ns.sleep(1000);
+            ns.tprint(`${red}Time Out in 0s`);
+            return ns.tprint(`${red}Script killed.`);
         }
       
-        if (ram_t < serverram) {    //If there is not enough ram for scripts, the commands below will not run
+        if (ram_t < serverram) {   
 
             for (const target of targets) {
                 ns.run("PortsNNuke.js", 1, target);

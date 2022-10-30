@@ -24,6 +24,4 @@ export async function main(ns) {
 
     ns.nuke(target);
     ns.print("All avalibe ports installed, ", target," was also Nuked");
-    
-    await ns.sleep(10000);
 }
