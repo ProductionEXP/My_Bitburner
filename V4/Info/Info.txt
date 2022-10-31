@@ -1,25 +1,29 @@
-Last reset was: 29-10-2022 9:58pm
-_______________________________________________
-
+Last reset was: 31-10-2022 4:22pm
+Active BitNode - 1.2
+______________________________________________________________________________________________
+Notes:
+    Next BitNode 5.1
+    Then BitNode 4.1
+______________________________________________________________________________________________
+ToDo:
+    Revise FullSetup.js for efficiency with other BitNodes
+______________________________________________________________________________________________
+Source Files
+    Source-File 1: Source Genesis - Level 1 / 3
+        This Source-File lets the player start with 32GB of RAM on his/her home computer. 
+        It also increases all of the player's multipliers by:
+            Level 1: 16%
+            Level 2: 24%
+            Level 3: 28%
+______________________________________________________________________________________________
 Active servers are:
-	Home	- 131.07TB
-    Cores   - 5
+	Home	- 32GB
+    Cores   - 1
 
     Other Servers
-        A:      - 8.19TB
-        B:      - 32.77TB 
-        C:      - 32.77TB
-        E:      - 1.05PB
-        F:      - 1.05PB
-        G:      - 1.05PB
-        H:      - 1.05PB
-        I:      - 1.05PB
-        J:      - 1.05PB
-        K:      - 1.05PB
-_______________________________________________
-
+______________________________________________________________________________________________
 Scripts
-V3
+V4
     EMG
         EMG_G.js
         ENG_Start.js
@@ -39,9 +43,8 @@ V3
 
     Other    
         v1.js
+        hud.js
 
     Servers
         NewServer.js
         Remove_Server.js
-
-    Stock Market        
