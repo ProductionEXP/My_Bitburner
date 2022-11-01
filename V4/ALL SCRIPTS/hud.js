@@ -1,22 +1,6 @@
-/**
- * Copyright (C) 2022 Duck McSouls
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
 
 /**
- * Decorate a custom line with our favourite colour.
+ * 
  *
  * @param str We want to add colour to this string.
  * @param colour Colourize the given string with this colour.  The colour string
@@ -63,9 +47,6 @@ export async function main(ns) {
             // wrapper of numeral.js.
             const header = [];
             const value = [];
-            // The current negative karma value.
-            header.push("Karma");
-            value.push(ns.nFormat(ns.heart.break(), "0,0.00"));
             // The Hack XP of all scripts per second.
             header.push("Hack XP");
             value.push(ns.nFormat(ns.getTotalScriptExpGain(), "0,0.00"));

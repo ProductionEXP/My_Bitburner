@@ -53,4 +53,6 @@ export async function main(ns) {
 	    ns.deleteServer(servers);
 	    ns.tprint(`${red}Removed Server ${servers}`);
     }
+
+    ns.tprint(`${red}Removed all servers that where defined.`)
 }
