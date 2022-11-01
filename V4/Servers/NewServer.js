@@ -21,7 +21,7 @@ export async function main(ns) {
 		ns.purchaseServer(name, max);
 		ns.tprint(`${green}Purchased a server with ${max}Gb. New server is named: ${name}`);
 		ns.scp(files, name, "home");
-		ns.tprint(`${green}New Server named: ${name}, costed ${ns.getPurchasedServerCost(max)}`);
+		ns.tprint(`${green}New Server named: ${name}, costed ${ns.tFormat(Math.floor(ns.getPurchasedServerCost(max)))}`);
 		return ns.tprint(`${red}Script killed.`);
 	
 	}
@@ -34,14 +34,19 @@ export async function main(ns) {
 	}
 
 	if (ns.getServerMoneyAvailable("home") < ns.getPurchasedServerCost(ram)) {
+		
 		ns.tprint(`${blue}Need more money to purchase server with ${ram}Gb of ram`);
-		ns.tprint(`${blue +"Have $"+ ns.getServerMoneyAvailable("home")+ ", Need $"+ ns.getPurchasedServerCost(ram)}`);
-		ns.tprint(`${blue + "Need $"+ (ns.getServerMoneyAvailable("home") - ns.getPurchasedServerCost(ram))*-1+ " more"}`);
+
+		ns.tprint(`${blue}Have ${ns.tFormat(Math.floor(ns.getServerMoneyAvailable("home"), "$0,0.00"))} Need ${ns.tFormat(Math.floor(ns.getPurchasedServerCost(ram)), "$0,0.00")}`);
+
+		const needmore = Math.floor(ns.getServerMoneyAvailable("home") - ns.getPurchasedServerCost(ram))*-1;
+			ns.tprint(`${blue}Need ${ns.tFormat(needmore, "$0,0.00")} more`);
+
 		return ns.tprint(`${red}Script killed.`);
 	}
 
 	ns.purchaseServer(name, ram);
 	ns.tprint(`${green}Purchased a server with ${ram}Gb. New server is named: ${name}`);
-	ns.tprint(`${green}New Server named: ${name}, costed ${ns.getPurchasedServerCost(ram)}`);
+	ns.tprint(`${green}New Server named: ${name}, costed ${ns.tFormat(Math.floor(ns.getPurchasedServerCost(ram)), "0,0.00")}`);
 	ns.scp(files, name, "home");
 }
