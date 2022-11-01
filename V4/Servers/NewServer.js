@@ -34,13 +34,9 @@ export async function main(ns) {
 	}
 
 	if (ns.getServerMoneyAvailable("home") < ns.getPurchasedServerCost(ram)) {
-
 		ns.tprint(`${blue}Need more money to purchase server with ${ram}Gb of ram`);
-
 		ns.tprint(`${blue}Have ${ns.nFormat(ns.getServerMoneyAvailable("home"), "$0,0.00")} Need ${ns.nFormat(ns.getPurchasedServerCost(ram), "$0,0.00")}`);
-
 		ns.tprint(`${blue}Need ${ns.nFormat(ns.getPurchasedServerCost(ram) - ns.getServerMoneyAvailable("home"), "$0,0.00")} more`);
-
 		return ns.tprint(`${red}Script killed.`);
 	}
 
