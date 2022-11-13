@@ -23,9 +23,6 @@ export async function main(ns) {
 
 		let props = getProps(box);
 
-		// get a 10% cash bonus
-		props.player.money = props.player.money * 1.1;
-
 		//  open dev menu
 		props.router.toDevMenu();
 	}

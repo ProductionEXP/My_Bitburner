@@ -1,4 +1,4 @@
 /** @param {NS} ns */
-export async function main(ns) {
+export function HacknetM(ns) {
 
 }
