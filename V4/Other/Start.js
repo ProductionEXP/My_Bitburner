@@ -18,8 +18,25 @@ export function HacknetM(ns) {
 	    const indigo = "\u001b[38;5;33m";
     	const violet = "\u001b[38;5;141m";
 
-    if (ns.getHackingLevel() > 56 ) {
-        ns.tprint()
-    }
+    //CSEC    
+        if (ns.getHackingLevel() > 56 ) {
+            ns.tprint(`${green}`)
+        }
 
-}
+    //avmnite-02h
+        if (ns.getHackingLevel() > 56 ) {
+            ns.tprint(`${green}`)
+        }
+
+
+    //I.I.I.I
+        if (ns.getHackingLevel() > 56 ) {
+            ns.tprint(`${green}`)
+        }    
+
+    //run4theh111z
+        if (ns.getHackingLevel() > 56 ) {
+            ns.tprint(`${green}`)
+        }
+
+    }
