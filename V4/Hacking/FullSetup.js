@@ -1,5 +1,5 @@
-//Imports
-import { serverram } from "./Functions-Library/Functions";
+//absolute import
+import { serverram } from `/src/Functions-Library/Functions`;
 
 /** @param {NS} ns */
 export async function main(ns) {
