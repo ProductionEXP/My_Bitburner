@@ -1,4 +1,4 @@
-Last reset was: 31-10-2022 4:22pm
+Last reset was: 14-11-2022 7:58pm
 Active BitNode - 1.2
 ______________________________________________________________________________________________
 Notes:
@@ -17,19 +17,16 @@ Source Files
             Level 3: 28%
 ______________________________________________________________________________________________
 Active servers are:
-	Home	- 32.00GB
-    Cores   - 1
+	Home	- 512.00GB
+    Cores   - 2
 
     Other Servers
-        A:          - 128.00GB
-        A:-0        - 32.00GB
+        A:          - 8.19TB
 ______________________________________________________________________________________________
 Scripts
 V4
-    EMG
-        EMG_G.js
-        ENG_Start.js
-        EMG_W.js
+    Function-Library
+        Functions.js
 
     Hacking
         Full_V3.js
@@ -39,14 +36,15 @@ V4
         Weaken_V3.js
 
     Info
+        Active_Stats_Log.js
         Color_Info.js
         Info.txt
         netmap.js
 
     Other    
-        v1.js
-        hud.js
+        Faction-Servers.js
         playermoneygraph.js
+        v1.js
 
     Servers
         NewServer.js

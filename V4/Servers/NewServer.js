@@ -21,7 +21,7 @@ export async function main(ns) {
 		ns.purchaseServer(name, max);
 		ns.tprint(`${green}Purchased a server with ${max}Gb. New server is named: ${name}`);
 		ns.scp(files, name, "home");
-		ns.tprint(`${green}New Server named: ${name}, costed ${ns.tFormat(ns.getPurchasedServerCost(max))}`);
+		ns.tprint(`${green}New Server named: ${name}, costed ${ns.nFormat(ns.getPurchasedServerCost(max), "$0,0.00a")}`);
 		return ns.tprint(`${red}Script killed.`);
 	
 	}
@@ -29,19 +29,19 @@ export async function main(ns) {
 	if (!valid_ram.includes(ram)) {
 		ns.tprint("RAM value must be a power of 2 that's below or equal to 2^20.");
 		ns.tprint("Your value was ", ram);
-		ns.tprint("Accepted values are 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288 or, 1048576");
+		ns.tprint("Accepted values are 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, or max");
 		return ns.tprint(`${red}Script killed.`);
 	}
 
 	if (ns.getServerMoneyAvailable("home") < ns.getPurchasedServerCost(ram)) {
 		ns.tprint(`${blue}Need more money to purchase server with ${ram}Gb of ram`);
-		ns.tprint(`${blue}Have ${ns.nFormat(ns.getServerMoneyAvailable("home"), "$0,0.00")} Need ${ns.nFormat(ns.getPurchasedServerCost(ram), "$0,0.00")}`);
-		ns.tprint(`${blue}Need ${ns.nFormat(ns.getPurchasedServerCost(ram) - ns.getServerMoneyAvailable("home"), "$0,0.00")} more`);
+		ns.tprint(`${blue}Have ${ns.nFormat(ns.getServerMoneyAvailable("home"), "$0,0.00a")} Need ${ns.nFormat(ns.getPurchasedServerCost(ram), "$0,0.00")}`);
+		ns.tprint(`${blue}Need ${ns.nFormat(ns.getPurchasedServerCost(ram) - ns.getServerMoneyAvailable("home"), "$0,0.00a")} more`);
 		return ns.tprint(`${red}Script killed.`);
 	}
 
 	ns.purchaseServer(name, ram);
 	ns.tprint(`${green}Purchased a server with ${ram}Gb. New server is named: ${name}`);
-	ns.tprint(`${green}New Server named: ${name}, costed ${ns.nFormat(ns.getPurchasedServerCost(ram), "$0,0.00")}`);
+	ns.tprint(`${green}New Server named: ${name}, costed ${ns.nFormat(ns.getPurchasedServerCost(ram), "$0,0.00a")}`);
 	ns.scp(files, name, "home");
 }

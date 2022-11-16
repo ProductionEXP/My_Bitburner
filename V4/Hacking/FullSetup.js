@@ -1,3 +1,6 @@
+//Imports
+import { serverram } from "/Functions-Library/Functions";
+
 /** @param {NS} ns */
 export async function main(ns) {
 
@@ -10,8 +13,6 @@ export async function main(ns) {
         
 	    const targeta = targets.length; //Finds the ammount of targets
 
-        const serverram = ns.getServerMaxRam(server) - ns.getServerUsedRam(server); //Get server's availibe RAM
-        
         const ram_f = ns.getScriptRam("Full_V3.js") + ns.getScriptRam("Grow_V3.js") + ns.getScriptRam("Weaken_V3.js");  //Finds the ammount of ram needed to run the three scripts
             const ram_t = ram_f*targeta;    //Finds the total ammount of ram for all scripts
 
