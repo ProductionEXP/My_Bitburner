@@ -1,5 +1,5 @@
 //Imports
-import { serverram } from "/src/Functions-Library/Functions"
+import { serverram } from "/src/Function-Library/Functions"
 
 /** @param {NS} ns */
 export async function main(ns) {
@@ -7,8 +7,11 @@ export async function main(ns) {
     ns.disableLog("ALL");
 
     //Constants
-
+    //test
         const server = ns.args[0];  //What server will the scripts run on
+            const target = ns.args[0];
+            ns.print(target);
+            ns.print(serverram);
         const targets = ns.args.slice(1);   //Slices the ammount of targets
         
 	    const targeta = targets.length; //Finds the ammount of targets
