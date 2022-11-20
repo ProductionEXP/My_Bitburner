@@ -1,5 +1,5 @@
 //Imports
-import { serverram } from "/src/Function-Library/Functions"
+import { tail } from "/src/Function-Library/Functions"
 
 /** @param {NS} ns */
 export async function main(ns) {
@@ -7,12 +7,12 @@ export async function main(ns) {
     ns.disableLog("ALL");
 
     //Constants
-    //test
-        const server = ns.args[0];  //What server will the scripts run on
-            const target = ns.args[0];
-            ns.print(target);
-            ns.print(serverram);
-        const targets = ns.args.slice(1);   //Slices the ammount of targets
+
+        const ton = ns.args[0];
+        const server = ns.args[1];  //What server will the scripts run on
+            const target = ns.args[1];
+            const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
+        const targets = ns.args.slice(2);   //Slices the ammount of targets
         
 	    const targeta = targets.length; //Finds the ammount of targets
 
@@ -23,6 +23,39 @@ export async function main(ns) {
                                                   //Then rounds it down, ex. 49.98 beomes 49
         //Color Constants
             const red = "\u001b[38;5;001m";
+
+    // Log Settings
+
+        if (tail(ns, ton) === "tailF") {
+            ns.tail();
+            ns.clearLog();
+        }
+
+        if (tail(ns, ton) === "tailC") {
+            ns.tail();
+            ns.disableLog("ALL");
+            ns.clearLog();
+        }
+
+        if (tail(ns, ton) === "logF") {
+            ns.clearLog();
+        }
+    
+        if (tail(ns, ton) === "logC") {
+            ns.disableLog("ALL");
+            ns.clearLog();
+        }
+    
+        if (tail(ns, ton) === "fail") {
+            ns.tprint(` `)
+            ns.tprint(`Must Define a log version`);
+            ns.tprint(`Possible Versions are:`);
+            ns.tprint(`TailCostum       Coustom Log Open Tail`);
+            ns.tprint(`TailFull         Full Log Open Tail`);
+            ns.tprint(`LogFull          Full Log No Tailb `)
+            ns.tprint(`Default          Coustom Log No Tail`);
+            return ns.print(`Invalid or No log version provided`)
+        }
 
     //Terminal prints (for information)
 

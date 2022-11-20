@@ -1,13 +1,13 @@
-//Imports
-import { serverram } from "/src/Function-Library/Functions"
-
 /** @param {NS} ns */
 export async function main(ns) {
 
-    ns.tail();ns.disableLog("ALL");ns.clearLog(); 
+    ns.tail();
+    ns.disableLog("ALL");
+    ns.clearLog(); 
 
     //Constants
         const target = "home";
+        const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
 
     //Color Constants
     	const green = "\u001b[38;5;002m";
