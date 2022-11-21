@@ -50,8 +50,8 @@ export async function main(ns) {
                 ns.print(`${green} Hacking level > 207, can hack avmnite-02h`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
                     if (ns.fileExists(avmnitep, "home")) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                        ns.run("PortsNNuke.js", 1, "avmnite-02h");
+                        ns.run("netmap.js",1,"seek","avmnite-02h");
                         await ns.sleep(10000);
                     } 
 
@@ -81,8 +81,8 @@ export async function main(ns) {
                 ns.print(`${green} Hacking level > 347, can hack I.I.I.I`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
                     if (ns.fileExists(iiiip, "home")) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                        ns.run("PortsNNuke.js", 1, "I.I.I.I");
+                        ns.run("netmap.js",1,"seek","I.I.I.I");
                         await ns.sleep(10000);
                     } 
 
@@ -111,8 +111,8 @@ export async function main(ns) {
                 ns.print(`${green} Hacking level > 510, can hack run4theh111z`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
                     if (ns.fileExists(run4theh111zp, "home")) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                        ns.run("PortsNNuke.js", 1, "run4theh111z");
+                        ns.run("netmap.js",1,"seek","run4theh111z");
                         await ns.sleep(10000);
                     } 
 
