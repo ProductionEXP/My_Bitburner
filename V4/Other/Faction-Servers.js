@@ -10,6 +10,9 @@ export async function main(ns) {
         const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
 
     //Port Math
+    
+    let portsnumber = 0;
+    
     if (ns.fileExists("BruteSSH.exe", "home")) {
         let portsnumber = 1;
     }
