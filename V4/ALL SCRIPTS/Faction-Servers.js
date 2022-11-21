@@ -9,17 +9,33 @@ export async function main(ns) {
         const target = "home";
         const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
 
+    //Port Math
+    if (ns.fileExists("BruteSSH.exe", "home")) {
+        let portsnumber = 1;
+    }
+
+    if (ns.fileExists("FTPCrack.exe", "home")) {
+        let portsnumber = 2;
+    }
+
+    if (ns.fileExists("relaySMTP.exe", "home")) {
+        let portsnumber = 3;
+    }
+
+    if (ns.fileExists("HTTPWorm.exe", "home")) {
+        let portsnumber = 4;
+    }
+
     //Color Constants
     	const green = "\u001b[38;5;002m";
     	const red = "\u001b[38;5;001m";
 
     //CSEC (56) 
-        const CSECP = "BruteSSH.exe";
         while (ns.hasRootAccess("CSEC") == false) { 
             if (ns.getHackingLevel() > 56 ) {
                 ns.print(`${green} Hacking level > 56, can hack CSEC`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (ns.fileExists(CSECP, "home")) {
+                    if (portsnumber >= 1) {
                         ns.run("PortsNNuke.js", 1, "CSEC");
                         ns.run("netmap.js",1,"seek","CSEC");
                         await ns.sleep(10000);
@@ -44,14 +60,13 @@ export async function main(ns) {
         }   
 
     //avmnite-02h (207)
-        const avmnitep = "BruteSSH.exe, FTPCrack.exe";
         while (ns.hasRootAccess("avmnite-02h") == false) { 
             if (ns.getHackingLevel() > 207 ) {
                 ns.print(`${green} Hacking level > 207, can hack avmnite-02h`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (ns.fileExists(avmnitep, "home")) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                    if (portsnumber >= 2) {
+                        ns.run("PortsNNuke.js", 1, "avmnite-02h");
+                        ns.run("netmap.js",1,"seek","avmnite-02h");
                         await ns.sleep(10000);
                     } 
 
@@ -75,14 +90,13 @@ export async function main(ns) {
 
 
     //I.I.I.I (347)
-        const iiiip = "BruteSSH.exe, FTPCrack.exe, relaySMTP.exe";
         while (ns.hasRootAccess("I.I.I.I") == false) { 
             if (ns.getHackingLevel() > 347 ) {
                 ns.print(`${green} Hacking level > 347, can hack I.I.I.I`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (ns.fileExists(iiiip, "home")) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                    if (portsnumber >= 3) {
+                        ns.run("PortsNNuke.js", 1, "I.I.I.I");
+                        ns.run("netmap.js",1,"seek","I.I.I.I");
                         await ns.sleep(10000);
                     } 
 
@@ -104,15 +118,14 @@ export async function main(ns) {
             }
         }
 
-    //run4theh111z (510)
-        const run4theh111zp = "BruteSSH.exe, FTPCrack.exe, relaySMTP.exe, HTTPWorm.exe";
+    //run4theh111z (534)
         while (ns.hasRootAccess("run4theh111z") == false) { 
-            if (ns.getHackingLevel() > 510 ) {
-                ns.print(`${green} Hacking level > 510, can hack run4theh111z`)
+            if (ns.getHackingLevel() > 534 ) {
+                ns.print(`${green} Hacking level > 534, can hack run4theh111z`)
                 if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (ns.fileExists(run4theh111zp, "home")) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                    if (portsnumber >= 4) {
+                        ns.run("PortsNNuke.js", 1, "run4theh111z");
+                        ns.run("netmap.js",1,"seek","run4theh111z");
                         await ns.sleep(10000);
                     } 
 
@@ -129,7 +142,7 @@ export async function main(ns) {
             }
 
             else {
-                ns.print(`${red} Hacking Level to low to Nuke run4theh111z (${ns.getHackingLevel()} need 510)`);
+                ns.print(`${red} Hacking Level to low to Nuke run4theh111z (${ns.getHackingLevel()} need 534)`);
                 await ns.sleep(10000);
             }
         }
