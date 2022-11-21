@@ -87,7 +87,7 @@ export async function main(ns) {
                     } 
 
                     else {
-                        ns.print(`${red} Need more ports (.exe) to nuke avmnite-02h`);
+                        ns.print(`${red} Need more ports (.exe) to nuke I.I.I.I`);
                         await ns.sleep(10000);
                     }
                 }
@@ -117,7 +117,7 @@ export async function main(ns) {
                     } 
 
                     else {
-                        ns.print(`${red} Need more ports (.exe) to nuke avmnite-02h`);
+                        ns.print(`${red} Need more ports (.exe) to nuke run4theh111z`);
                         await ns.sleep(10000);
                     }
                 }
