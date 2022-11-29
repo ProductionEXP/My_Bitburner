@@ -10,24 +10,26 @@ export async function main(ns) {
         const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
 
     //Port Math
-    
+
     let portsnumber = 0;
-    
+
     if (ns.fileExists("BruteSSH.exe", "home")) {
-        let portsnumber = 1;
-    }
+        portsnumber = 1;
+    } 
 
     if (ns.fileExists("FTPCrack.exe", "home")) {
-        let portsnumber = 2;
+        portsnumber = 2;
     }
 
     if (ns.fileExists("relaySMTP.exe", "home")) {
-        let portsnumber = 3;
+        portsnumber = 3;
     }
 
     if (ns.fileExists("HTTPWorm.exe", "home")) {
-        let portsnumber = 4;
+        portsnumber = 4;
     }
+
+    ns.print(portsnumber);
 
     //Color Constants
     	const green = "\u001b[38;5;002m";
@@ -41,7 +43,7 @@ export async function main(ns) {
                     if (portsnumber >= 1) {
                         ns.run("PortsNNuke.js", 1, "CSEC");
                         ns.run("netmap.js",1,"seek","CSEC");
-                        await ns.sleep(10000);
+                        await ns.sleep(1000);
                     } 
 
                     else {
@@ -70,7 +72,7 @@ export async function main(ns) {
                     if (portsnumber >= 2) {
                         ns.run("PortsNNuke.js", 1, "avmnite-02h");
                         ns.run("netmap.js",1,"seek","avmnite-02h");
-                        await ns.sleep(10000);
+                        await ns.sleep(1000);
                     } 
 
                     else {
@@ -100,7 +102,7 @@ export async function main(ns) {
                     if (portsnumber >= 3) {
                         ns.run("PortsNNuke.js", 1, "I.I.I.I");
                         ns.run("netmap.js",1,"seek","I.I.I.I");
-                        await ns.sleep(10000);
+                        await ns.sleep(1000);
                     } 
 
                     else {
@@ -129,7 +131,7 @@ export async function main(ns) {
                     if (portsnumber >= 4) {
                         ns.run("PortsNNuke.js", 1, "run4theh111z");
                         ns.run("netmap.js",1,"seek","run4theh111z");
-                        await ns.sleep(10000);
+                        await ns.sleep(1000);
                     } 
 
                     else {

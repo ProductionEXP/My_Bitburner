@@ -10,21 +10,26 @@ export async function main(ns) {
         const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
 
     //Port Math
+
+    let portsnumber = 0;
+
     if (ns.fileExists("BruteSSH.exe", "home")) {
-        let portsnumber = 1;
-    }
+        portsnumber = 1;
+    } 
 
     if (ns.fileExists("FTPCrack.exe", "home")) {
-        let portsnumber = 2;
+        portsnumber = 2;
     }
 
     if (ns.fileExists("relaySMTP.exe", "home")) {
-        let portsnumber = 3;
+        portsnumber = 3;
     }
 
     if (ns.fileExists("HTTPWorm.exe", "home")) {
-        let portsnumber = 4;
+        portsnumber = 4;
     }
+
+    ns.print(portsnumber);
 
     //Color Constants
     	const green = "\u001b[38;5;002m";
