@@ -5,7 +5,6 @@ export async function main(ns) {
     const securityThresh = ns.getServerMinSecurityLevel(target) + 1;
 
     ns.disableLog("ALL");
-    ns.enableLog("print");
 
     while (true) {
 

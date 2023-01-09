@@ -5,7 +5,6 @@ export async function main(ns) {
     const moneyThresh = ns.getServerMaxMoney(target) * 0.75;
 
     ns.disableLog("ALL");
-    ns.enableLog("print");
 
     while (true) {
 

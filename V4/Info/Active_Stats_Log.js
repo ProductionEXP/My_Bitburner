@@ -1,12 +1,12 @@
-const green = "\u001b[38;5;040m";
-const orange = "\u001b[38;5;202m";
-
 /** @param {NS} ns */
 export async function main(ns) {
   ns.tail();ns.disableLog("ALL");ns.clearLog();
   ns.print("Active log started")
 
   const timeinstall = ns.getPlayer().playtimeSinceLastAug/1000
+
+  const green = "\u001b[38;5;040m";
+  const orange = "\u001b[38;5;202m";
 
   while(true){
     ns.clearLog();

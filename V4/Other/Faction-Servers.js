@@ -153,5 +153,5 @@ export async function main(ns) {
                 ns.clearLog();
             }
         }
-    //Coment line
+    
 }

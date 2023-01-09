@@ -1,6 +1,10 @@
 /** @param {NS} ns */
 export function tail(ns, input) {
 
+    if (input != "Default" || "TailFull" || "TailCostum" || "LogFull") {
+        return "fail"
+    }
+
     if (input === "TailCostum") {
         return "tailC"
     }
@@ -17,9 +21,6 @@ export function tail(ns, input) {
         return "logC"
     }
 
-    if (input != "Default" || "TailFull" || "TailCostum" || "LogFull") {
-        return "fail"
-    }
 }
 
 export function portsnumber(ns) {

@@ -34,7 +34,7 @@ export async function main(ns) {
             ns.disableLog("ALL");
             ns.clearLog();
         }
-
+                        
         if (tail(ns, ton) === "logF") {
             ns.clearLog();
         }
