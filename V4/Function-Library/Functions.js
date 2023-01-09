@@ -21,6 +21,45 @@ export function tail(ns, input) {
         return "fail"
     }
 }
-export function main(ns) {
+
+export function portsnumber(ns) {
+
+    if (ns.fileExists("BruteSSH.exe", "home")) {
+        const shh = 1;
+    } 
+        else {
+            const shh = 0
+        }
+    
+    if (ns.fileExists("FTPCrack.exe", "home")) {
+        const ftpc = 2;
+    }
+        else {
+            const ftpc = 0
+        }
+
+    if (ns.fileExists("relaySMTP.exe", "home")) {
+        const smtp = 3;
+    }
+        else {
+         const smtp = 0
+        }
+
+    if (ns.fileExists("HTTPWorm.exe", "home")) {
+        const httpw = 4;
+    }   
+        else {
+            const httpw = 0
+        }
+
+    if (ns.fileExists("SQLInject.exe", "home")) {
+        const sqli = 5;
+    }
+        else {
+            const sqli = 0
+        }
+    
+    const portsnumber = shh+ftpc+smtp+httpw+sqli
+    return portsnumber
 
 }
