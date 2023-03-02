@@ -4,7 +4,6 @@ export async function main(ns) {
 	const server = 	ns.args.slice(0);
         const servera = server.length;
     const red = "\u001b[38;5;001m";
-
     const yorn = await ns.prompt(`Are you sure you want to delete the servers named ${server}?`);
 
     if (servera >>> 1) {

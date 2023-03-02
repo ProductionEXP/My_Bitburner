@@ -26,10 +26,8 @@ Active servers are:
 ______________________________________________________________________________________________
 Scripts
 V4
-    EMG
-        EMG_G.js
-        ENG_Start.js
-        EMG_W.js
+    Function-Library
+        Functions.js
 
     Hacking
         Full_V3.js
@@ -39,14 +37,15 @@ V4
         Weaken_V3.js
 
     Info
+        Active_Stats_Log.js
         Color_Info.js
         Info.txt
         netmap.js
 
     Other    
-        v1.js
-        hud.js
+        Faction-Servers.js
         playermoneygraph.js
+        v1.js
 
     Servers
         NewServer.js

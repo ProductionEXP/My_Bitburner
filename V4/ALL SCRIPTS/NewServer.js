@@ -23,7 +23,6 @@ export async function main(ns) {
 		ns.scp(files, name, "home");
 		ns.tprint(`${green}New Server named: ${name}, costed ${ns.nFormat(ns.getPurchasedServerCost(max), "$0,0.00a")}`);
 		return ns.tprint(`${red}Script killed.`);
-	
 	}
 	
 	if (!valid_ram.includes(ram)) {

@@ -10,14 +10,12 @@ export async function main(ns) {
 
         const ton = ns.args[0];
         const server = ns.args[1];  //What server will the scripts run on
-            const target = ns.args[1];
-            const serverram = ns.getServerMaxRam(target) - ns.getServerUsedRam(target);
         const targets = ns.args.slice(2);   //Slices the ammount of targets
-        
-	    const targeta = targets.length; //Finds the ammount of targets
+    	    const targeta = targets.length; //Finds the ammount of targets
 
         const ram_f = ns.getScriptRam("Full_V3.js") + ns.getScriptRam("Grow_V3.js") + ns.getScriptRam("Weaken_V3.js");  //Finds the ammount of ram needed to run the three scripts
             const ram_t = ram_f*targeta;    //Finds the total ammount of ram for all scripts
+            const serverram = ns.getServerMaxRam(server) - ns.getServerUsedRam(server);
 
         const v3t = Math.floor(serverram/ram_t);  //Takes targeta (ammount of targets) devides it by the ram that it takes to run the three scripts
                                                   //Then rounds it down, ex. 49.98 beomes 49
@@ -36,7 +34,7 @@ export async function main(ns) {
             ns.disableLog("ALL");
             ns.clearLog();
         }
-
+                        
         if (tail(ns, ton) === "logF") {
             ns.clearLog();
         }

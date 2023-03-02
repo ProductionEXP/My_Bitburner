@@ -1,3 +1,6 @@
+//Imports
+import { portsnumber } from "/src/Function-Library/Functions"
+
 /** @param {NS} ns */
 export async function main(ns) {
   ns.tail();ns.disableLog("ALL");ns.clearLog();
@@ -10,6 +13,8 @@ export async function main(ns) {
 
   while(true){
     ns.clearLog();
+    ns.print(`${green}Number Of Avilible Ports is ${portsnumber}`);
+    ns.print(`${green}`);
     ns.print(`${green}Server income ${ns.nFormat(ns.getTotalScriptIncome()[0], "$0,0.00a")}/s`);
     ns.print(`${green}Hacknet income ${ns.nFormat(ns.getMoneySources().sinceInstall.hacknet/timeinstall, "$0,0.00a")}/s`);
     ns.print(`${orange}Server EXP income ${ns.nFormat(ns.getTotalScriptExpGain(), "0,0.00a")}/s`);

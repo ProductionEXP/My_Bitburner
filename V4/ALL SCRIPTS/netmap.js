@@ -1,3 +1,5 @@
+//found on github link to come
+
 /** @param {NS} ns **/
 export async function main(ns) {
 	function formatnum(num) {

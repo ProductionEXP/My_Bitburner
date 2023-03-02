@@ -1,3 +1,5 @@
+//No my code| Credit to come
+
 const MAX_SECURITY_DRIFT = 3;		// This is how far from minimum security we allow the server to be before weakening
 const MAX_MONEY_DRIFT_PCT = 0.1;	// This is how far from 100% money we allow the server to be before growing (1-based percentage)
 const DEFAULT_PCT = 0.25;			// This is the default 1-based percentage of money we want to hack from the server in a single pass
