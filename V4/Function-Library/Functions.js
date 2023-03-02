@@ -25,42 +25,33 @@ export function tail(ns, input) {
 
 export function portsnumber(ns) {
 
+    let shh = 0;
+    let ftpc = 0;
+    let smtp = 0;
+    let httpw = 0;
+    let sqli = 0;
+
     if (ns.fileExists("BruteSSH.exe", "home")) {
-        const shh = 1;
+        shh = 1;
     } 
-        else {
-            const shh = 0
-        }
-    
+
     if (ns.fileExists("FTPCrack.exe", "home")) {
-        const ftpc = 2;
+        ftpc = 1;
     }
-        else {
-            const ftpc = 0
-        }
 
     if (ns.fileExists("relaySMTP.exe", "home")) {
-        const smtp = 3;
+        smtp = 1;
     }
-        else {
-         const smtp = 0
-        }
 
     if (ns.fileExists("HTTPWorm.exe", "home")) {
-        const httpw = 4;
+        httpw = 1;
     }   
-        else {
-            const httpw = 0
-        }
 
     if (ns.fileExists("SQLInject.exe", "home")) {
-        const sqli = 5;
+        sqli = 1;
     }
-        else {
-            const sqli = 0
-        }
     
-    const portsnumber = shh+ftpc+smtp+httpw+sqli
+    const portsnumber = (shh+ftpc+smtp+httpw+sqli);
     return portsnumber
 
 }
