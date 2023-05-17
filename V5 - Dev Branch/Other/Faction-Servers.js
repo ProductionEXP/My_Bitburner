@@ -1,5 +1,5 @@
 //Imports
-import { portsnumber } from "/src/Function-Library/Functions"
+import { portsnumber } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {
@@ -14,7 +14,7 @@ export async function main(ns) {
 
     //Port Math
 
-        ns.print(portsnumber); 
+        ns.print(portsnumber(ns)); 
 
     //Color Constants
     	const green = "\u001b[38;5;002m";
@@ -25,10 +25,11 @@ export async function main(ns) {
         while (ns.hasRootAccess("CSEC") == false) { 
             if (ns.getHackingLevel() > 56 ) {
                 ns.print(`${green} Hacking level > 56, can hack CSEC`)
-                if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (portsnumber >= 1) {
-                        ns.run("PortsNNuke.js", 1, "CSEC");
-                        ns.run("netmap.js",1,"seek","CSEC");
+                if (serverram > 2.55) {
+                    if (portsnumber(ns) >= 1) {
+                        ns.brutessh("CSEC");
+                        ns.nuke("CSEC");
+                        ns.run("Info/netmap.js",1,"seek","CSEC");
                         await ns.sleep(1000);
                     } 
 
@@ -58,10 +59,12 @@ export async function main(ns) {
         while (ns.hasRootAccess("avmnite-02h") == false) { 
             if (ns.getHackingLevel() > 207 ) {
                 ns.print(`${green} Hacking level > 207, can hack avmnite-02h`)
-                if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (portsnumber >= 2) {
-                        ns.run("PortsNNuke.js", 1, "avmnite-02h");
-                        ns.run("netmap.js",1,"seek","avmnite-02h");
+                if (portsnumber(ns) > 2.55) {
+                    if (portsnumber(ns) >= 2) {
+                        ns.brutessh("avmnite-02h");
+                        ns.ftpcrack("avmnite-02h");
+                        ns.nuke("avmnite-02h");
+                        ns.run("Info/netmap.js",1,"seek","avmnite-02h");
                         await ns.sleep(1000);
                     } 
 
@@ -91,12 +94,16 @@ export async function main(ns) {
         ns.tail();
         while (ns.hasRootAccess("I.I.I.I") == false) { 
             if (ns.getHackingLevel() > 347 ) {
-                ns.print(`${green} Hacking level > 347, can hack I.I.I.I`)
-                if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (portsnumber >= 3) {
-                        ns.run("PortsNNuke.js", 1, "I.I.I.I");
-                        ns.run("netmap.js",1,"seek","I.I.I.I");
+                ns.print(`${green} Hacking level > 347, can hack I.I.I.I`);
+                if (serverram >= 2.55) {
+                    if (portsnumber(ns) >= 3) {
+                        ns.brutessh("I.I.I.I");
+                        ns.ftpcrack("I.I.I.I");
+                        ns.relaysmtp("I.I.I.I");
+                        ns.nuke("I.I.I.I");
+                        ns.run("Info/netmap.js",1,"seek","I.I.I.I");
                         await ns.sleep(1000);
+                        ns.clearLog();
                     } 
 
                     else {
@@ -125,10 +132,14 @@ export async function main(ns) {
         while (ns.hasRootAccess("run4theh111z") == false) { 
             if (ns.getHackingLevel() > 534 ) {
                 ns.print(`${green} Hacking level > 534, can hack run4theh111z`)
-                if (serverram > ns.getScriptRam("PortsNNuke.js")+ns.getScriptRam("netmap.js")) {
-                    if (portsnumber >= 4) {
-                        ns.run("PortsNNuke.js", 1, "run4theh111z");
-                        ns.run("netmap.js",1,"seek","run4theh111z");
+                if (serverram >= 2.55) {
+                    if (portsnumber(ns) >= 4) {
+                        ns.brutessh("run4theh111z");
+                        ns.ftpcrack("run4theh111z");
+                        ns.relaysmtp("run4theh111z");
+                        ns.httpworm("run4theh111z");
+                        ns.nuke("run4theh111z");
+                        ns.run("Info/netmap.js",1,"seek","run4theh111z");
                         await ns.sleep(1000);
                         ns.clearLog();
                     } 
