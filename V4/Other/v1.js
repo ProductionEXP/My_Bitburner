@@ -74,7 +74,7 @@ async function Exploit(ns, server, pct, xpMode) {
 		// Report
 		ns.print('');
 		ns.print(server);
-		ns.print('INFO: Money    : ' + ns.nFormat(money, "$0.000a") + ' / ' + ns.nFormat(maxMoney, "$0.000a") + ' (' + (money / maxMoney * 100).toFixed(2) + '%)');
+		ns.print('INFO: Money    : ' + ns.formatNumber(money, "$0.000a") + ' / ' + ns.formatNumber(maxMoney, "$0.000a") + ' (' + (money / maxMoney * 100).toFixed(2) + '%)');
 		ns.print('INFO: Security : ' + (sec - minSec).toFixed(2));
 		ns.print('INFO: Weaken   : ' + ns.tFormat(ns.getWeakenTime(server)) + ' (t=' + weakenThreads + ')');
 		ns.print('INFO: Grow     : ' + ns.tFormat(ns.getGrowTime(server)) + ' (t=' + growThreads + ')');
