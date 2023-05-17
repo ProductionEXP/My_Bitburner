@@ -1,12 +1,7 @@
 V4---Post-Fl1ght.exe
-There are four primary Versions
-    V1
-    V2
-    V3
-    V4
 
 Each Version has many scripts, the newer version the faster/better/smarter/safer 
-BUT V4+ DO INCLUDE APIs THAT CAN NOT BE ACCESSED TILL FURTHER POINTS (Bitnodes)
+BUT V5+ DO INCLUDE APIs THAT CAN NOT BE ACCESSED TILL FURTHER POINTS (Bitnodes)
 
 Quick run down of each Version
 V1
@@ -22,6 +17,7 @@ V3
         all scripts work
 
 V4
-         
-=======
-Full readme will come in V4
+        Most developed (stable) version of the code. Final release date 5-16-2023.
+
+V5
+        Brand new in development. 
