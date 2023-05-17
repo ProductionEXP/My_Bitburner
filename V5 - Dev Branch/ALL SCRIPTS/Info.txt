@@ -1,0 +1,52 @@
+Last reset was: 31-10-2022 4:22pm
+Active BitNode - 1.2
+______________________________________________________________________________________________
+Notes:
+    Next BitNode 5.1
+    Then BitNode 4.1
+______________________________________________________________________________________________
+Todo:
+    https://github.com/users/ProductionEXP/projects/1 
+______________________________________________________________________________________________
+Source Files
+    Source-File 1: Source Genesis - Level 1 / 3
+        This Source-File lets the player start with 32GB of RAM on his/her home computer. 
+        It also increases all of the player's multipliers by:
+            Level 1: 16%
+            Level 2: 24%
+            Level 3: 28%
+______________________________________________________________________________________________
+Active servers are:
+	Home	- 32.00GB
+    Cores   - 1
+
+    Other Servers
+        A:          - 128.00GB
+        A:-0        - 32.00GB
+______________________________________________________________________________________________
+Scripts
+V4
+    Function-Library
+        Functions.js
+
+    Hacking
+        Full_V3.js
+        FullSetup.js
+        Grow_V3.js
+        PortsNNuke.js
+        Weaken_V3.js
+
+    Info
+        Active_Stats_Log.js
+        Color_Info.js
+        Info.txt
+        netmap.js
+
+    Other    
+        Faction-Servers.js
+        playermoneygraph.js
+        v1.js
+
+    Servers
+        NewServer.js
+        Remove_Server.js
