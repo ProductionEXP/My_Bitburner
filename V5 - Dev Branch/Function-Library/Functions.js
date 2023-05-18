@@ -35,23 +35,43 @@ export function portsnumber(ns) {
         shh = 1;
     } 
 
-    if (ns.fileExists("FTPCrack.exe", "home")) {
+    if (ns.fileExists("FTPCrack.exe" ,"home")) {
         ftpc = 1;
     }
 
-    if (ns.fileExists("relaySMTP.exe", "home")) {
+    if (ns.fileExists("relaySMTP.exe" ,"home")) {
         smtp = 1;
     }
 
-    if (ns.fileExists("HTTPWorm.exe", "home")) {
+    if (ns.fileExists("HTTPWorm.exe" ,"home")) {
         httpw = 1;
     }   
 
-    if (ns.fileExists("SQLInject.exe", "home")) {
+    if (ns.fileExists("SQLInject.exe" ,"home")) {
         sqli = 1;
     }
     
     const portsnumber = (shh+ftpc+smtp+httpw+sqli);
     return portsnumber
 
+}
+
+export function CurentHackServers(ns) {
+    const portsnumber1 = portsnumber(ns);
+    const servers = [];
+    for(const server of AllServers(ns))
+    if(portsnumber1 >= ns.getServerNumPortsRequired(server) && ns.getHackingLevel() >= ns.getServerRequiredHackingLevel(server) && ns.getServerMaxMoney(server) > 0) {
+        servers.push(server)
+    }
+    return servers
+}
+
+export function AllServers(ns) {
+    const allservers = ["home"];
+    for (const server of allservers) {
+        for (const servers of ns.scan(server)) {
+            if(!allservers.includes(servers)) {allservers.push(servers)}
+        }
+    }
+    return allservers
 }

@@ -2,7 +2,7 @@
 const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
 const files = ["Grow_V3.js", "Full_V3.js", "Weaken_V3.js", "FullSetup.js", "NewServer.js"];
 
-//Colors
+// Colors
 	const red = "\u001b[38;5;001m";
 	const blue = "\u001b[38;5;004m";
 	const green = "\u001b[38;5;002m";
@@ -21,7 +21,7 @@ export async function main(ns) {
 		ns.purchaseServer(name, max);
 		ns.tprint(`${green}Purchased a server with ${max}Gb. New server is named: ${name}`);
 		ns.scp(files, name, "home");
-		ns.tprint(`${green}New Server named: ${name}, costed ${ns.formatNumber(ns.getPurchasedServerCost(max), "$0,0.00a")}`);
+		ns.tprint(`${green}New Server named: ${name}, costed ${ns.formatNumber(ns.getPurchasedServerCost(max), 3)}`);
 		return ns.tprint(`${red}Script killed.`);
 	}
 	
@@ -34,13 +34,13 @@ export async function main(ns) {
 
 	if (ns.getServerMoneyAvailable("home") < ns.getPurchasedServerCost(ram)) {
 		ns.tprint(`${blue}Need more money to purchase server with ${ram}Gb of ram`);
-		ns.tprint(`${blue}Have ${ns.formatNumber(ns.getServerMoneyAvailable("home"), "$0,0.00a")} Need ${ns.formatNumber(ns.getPurchasedServerCost(ram), "$0,0.00")}`);
-		ns.tprint(`${blue}Need ${ns.formatNumber(ns.getPurchasedServerCost(ram) - ns.getServerMoneyAvailable("home"), "$0,0.00a")} more`);
+		ns.tprint(`${blue}Have ${ns.formatNumber(ns.getServerMoneyAvailable("home"), 3)} Need ${ns.formatNumber(ns.getPurchasedServerCost(ram), 3)}`);
+		ns.tprint(`${blue}Need ${ns.formatNumber(ns.getPurchasedServerCost(ram) - ns.getServerMoneyAvailable("home"), 3)} more`);
 		return ns.tprint(`${red}Script killed.`);
 	}
 
 	ns.purchaseServer(name, ram);
 	ns.tprint(`${green}Purchased a server with ${ram}Gb. New server is named: ${name}`);
-	ns.tprint(`${green}New Server named: ${name}, costed ${ns.formatNumber(ns.getPurchasedServerCost(ram), "$0,0.00a")}`);
+	ns.tprint(`${green}New Server named: ${name}, costed ${ns.formatNumber(ns.getPurchasedServerCost(ram), 3)}`);
 	ns.scp(files, name, "home");
 }

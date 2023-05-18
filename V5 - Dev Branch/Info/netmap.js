@@ -1,4 +1,4 @@
-//found on github link to come
+// found on github link to come
 
 /** @param {NS} ns **/
 export async function main(ns) {
@@ -22,7 +22,7 @@ export async function main(ns) {
 
 	function showmap(server = 'home', lastserver = 'home', levels = 0, hidebig = false,target=null) {
 		
-		//for finding targets
+		// for finding targets
 		var obj = new serverObj(server,lastserver);
 		serverlist[server] = obj;
 
@@ -36,11 +36,11 @@ export async function main(ns) {
 			if (svrarr[j] != lastserver) {
 
 				var host = svrarr[j];
-				//get required skill
+				// get required skill
 				var skl = ns.getServerRequiredHackingLevel(host);
 
 				if ((!hidebig) || (skl <= level)) {
-					//get data
+					// get data
 					var secmin = ns.getServerMinSecurityLevel(host);
 					var sec = ns.getServerSecurityLevel(host);
 					var cashmax = ns.getServerMaxMoney(host);
@@ -50,11 +50,11 @@ export async function main(ns) {
 					var root = ns.hasRootAccess(host) ? "YES" : "NO";
 
 					if(target==null) {
-						//show server
+						// show server
 						ns.tprint(" ");
 						ns.tprint(hyphens + "> " + host);
 
-						//show data
+						// show data
 						ns.tprint(hyphens + "--" + "Root Access: " + root + ", Required hacking skill: " + skl);
 						ns.tprint(hyphens + "--" + "Number of open ports required to NUKE: " + ports);
 						ns.tprint(hyphens + "--" + "RAM: " + ram + "GB");
@@ -74,7 +74,7 @@ export async function main(ns) {
 								svr=serverlist[svr.parent];
 							}
 
-							//patharr = ['home'].concat(patharr);
+							// patharr = ['home'].concat(patharr);
 							patharr.push(target);
 
 							var path = "home";
@@ -87,7 +87,7 @@ export async function main(ns) {
 						}
 					}
 
-					//show sublinks
+					// show sublinks
 					showmap(svrarr[j], server, levels + 1, hidebig,target);
 
 
