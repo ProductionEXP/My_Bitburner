@@ -75,3 +75,49 @@ export function AllServers(ns) {
     }
     return allservers
 }
+
+export function Whatports(ns) {
+    const ports = [];
+    if (ns.fileExists("BruteSSH.exe", "home")) {
+        ports.push('BruteSSH.exe')
+    } 
+
+    if (ns.fileExists("FTPCrack.exe" ,"home")) {
+        ports.push('FTPCrack.exe')
+    }
+
+    if (ns.fileExists("relaySMTP.exe" ,"home")) {
+        ports.push('relaySMTP.exe')
+    }
+
+    if (ns.fileExists("HTTPWorm.exe" ,"home")) {
+        ports.push('HTTPWorm.exe')
+    }   
+
+    if (ns.fileExists("SQLInject.exe" ,"home")) {
+        ports.push('SQLInject.exe')
+    }
+    return ports
+}
+
+export function Portem(ns, target) {
+    if (ns.fileExists("BruteSSH.exe", "home")) {
+        ns.brutessh(target);
+    }
+
+    if (ns.fileExists("FTPCrack.exe", "home")) {
+        ns.ftpcrack(target);
+    }
+
+    if (ns.fileExists("relaySMTP.exe", "home")) {
+        ns.relaysmtp(target);
+    }
+
+    if (ns.fileExists("HTTPWorm.exe", "home")) {
+        ns.httpworm(target);
+    }
+
+    if (ns.fileExists("SQLInject.exe", "home")) {
+        ns.sqlinject(target);
+    }
+}

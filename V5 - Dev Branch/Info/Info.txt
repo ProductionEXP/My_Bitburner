@@ -1,4 +1,4 @@
-Last reset was: 17-5-2023 6:32pm
+Last reset was: 19-5-2023 4:16pm
 Active BitNode - 1.2
 ______________________________________________________________________________________________
 Notes:
@@ -12,21 +12,21 @@ Source Files
             Level 1: 16%
             Level 2: 24%
             Level 3: 28%
+
+    Source-File -1: Exploits in the BitNodes - Level 1 / 11
+        This Source-File can only be acquired with obscure knowledge of the game, javascript, and the web ecosystem.
+        It increases all of the player's multipliers by 0.1%
+
+        You have found the following exploits:
+             * by harnessing the power of the n00dles.
 ______________________________________________________________________________________________
 Active servers are:
 	Home	- 8.19TB
     Cores   - 3
 
     Other Servers
-    A:      - 4.10TB
-    B:      - 8.19TB
-    C:      - 65.54TB
-    D:      - 1.05PB
-    E:      - 1.05PB
-    F:      - 1.05PB
-    G:      - 1.05PB
-    H:      - 1.05PB
-    I:      - 1.05PB
+    A:      - 1.05PB
+    B:      - 1.05PB
         
 ______________________________________________________________________________________________
 Scripts
