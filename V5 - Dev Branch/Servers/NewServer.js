@@ -1,6 +1,6 @@
 /** @param {NS} ns */
 const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
-const files = ["Grow_V3.js", "Full_V3.js", "Weaken_V3.js", "FullSetup.js", "NewServer.js"];
+const files = ["Grow_V4.js", "Weaken_V4.js"];
 
 // Colors
 	const red = "\u001b[38;5;001m";
@@ -26,9 +26,10 @@ export async function main(ns) {
 	}
 	
 	if (!valid_ram.includes(ram)) {
-		ns.tprint("RAM value must be a power of 2 that's below or equal to 2^20.");
+		ns.tprint("RAM value must be a power of 2.");
 		ns.tprint("Your value was ", ram);
 		ns.tprint("Accepted values are 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, or max");
+		//ns.tprint("Max allwowed ram for this bitnode is " + ns.getBitNodeMultipliers().PurchasedServerMaxRam)
 		return ns.tprint(`${red}Script failed.`);
 	}
 
