@@ -6,8 +6,8 @@ export async function main(ns) {
   ns.tail();ns.disableLog("ALL");ns.clearLog();
   ns.print("Active log started")
 
-  const green = "\u001b[38;5;040m";
-  const orange = "\u001b[38;5;202m";
+  const green = "\u001b[38;5;046m";
+  const orange = "\u001b[38;5;208m";
   let t1 = 0;
 
   //const augmentsowned = Singularity.getOwnedAugmentations().slice()

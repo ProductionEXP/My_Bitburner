@@ -20,13 +20,13 @@ export async function main(ns) {
 
             const v3t = Math.floor(serverram/ram_t);  // Takes targeta (ammount of targets) devides it by the ram that it takes to run the three scripts. Then rounds it down, ex. 49.98 beomes 49
     // Color Constants
-                const red = "\u001b[38;5;001m";
+                const red = "\u001b[38;5;009m";
 
     // Terminal prints (for information)
 
             if (ram_t < serverram) {   
                 ns.tprint("RAM used per set of scripts is: ", ns.formatRam(ram_f,1),". ", targeta," targets, for a total of ", ns.formatRam(ram_t,1), ". At ", ns.formatNumber(v3t), " threads each for a grand total of ",ns.formatRam(v3t*ram_t),", Server has ", ns.formatRam(serverram-(v3t*ram_t))," available.");
-                ns.tprint("Server is ", server)
+                ns.tprint("Server's name is ", server)
                 ns.tprint("")
             }
 

@@ -3,9 +3,9 @@ const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
 const files = ["Grow_V4.js", "Weaken_V4.js"];
 
 // Colors
-	const red = "\u001b[38;5;001m";
-	const blue = "\u001b[38;5;004m";
-	const green = "\u001b[38;5;002m";
+	const red = "\u001b[38;5;009m";
+	const blue = "\u001b[38;5;012m";
+	const green = "\u001b[38;5;010m";
 
 export async function main(ns) {
 	const [ram, name] = ns.args;
