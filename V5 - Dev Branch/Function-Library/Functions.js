@@ -121,3 +121,10 @@ export function Portem(ns, target) {
         ns.sqlinject(target);
     }
 }
+
+export function progressBar(progress, length) {
+    const em = '-'
+    const fu = '|'
+    progress = Math.min(1, progress) || 0
+    return `[${fu.repeat(Math.floor(length * progress))}${em.repeat(Math.ceil(length * (1 - progress)))}]`
+}

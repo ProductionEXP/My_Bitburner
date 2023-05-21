@@ -12,10 +12,10 @@ export async function main(ns) {
     const target = ns.args[0];
     const functioninput = ns.args[1];
 
-    if (target === 'tail') {ns.tprint(tail(ns, functioninput))}
-    if (target === 'portsnumber') {ns.tprint(portsnumber(ns))}
-    if (target === 'CurentHackServers') {ns.tprint(CurentHackServers(ns))}
-    if (target === 'AllServers') {ns.tprint(AllServers(ns))}
-    if (target === 'Whatports') {ns.tprint(Whatports(ns))}
-    if (target === 'Portem') {ns.tprint(Portem(ns, functioninput))}
+    if (target === 'tail') {tail(ns, functioninput)}
+    if (target === 'portsnumber') {portsnumber(ns)}
+    if (target === 'CurentHackServers') {CurentHackServers(ns)}
+    if (target === 'AllServers') {AllServers(ns)}
+    if (target === 'Whatports') {Whatports(ns)}
+    if (target === 'Portem') {Portem(ns, functioninput)}
 }

@@ -9,9 +9,9 @@ export async function main(ns) {
 
     // Constants
 
-        const server1 = ns.args.slice(0);  // What server will the scripts run on
+        const server1 = ns.args.slice(0);  
         for(const server of server1) {
-            const targets = CurentHackServers(ns);   // Slices the ammount of targets
+            const targets = CurentHackServers(ns);   
 
             const targeta = targets.length; // Finds the ammount of targets
             const ram_f = ns.getScriptRam("/Hacking/Grow_V4.js") + ns.getScriptRam("/Hacking/Weaken_V4.js");  // Finds the ammount of ram needed to run the three scripts

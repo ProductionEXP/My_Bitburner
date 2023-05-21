@@ -80,18 +80,13 @@ export async function main(ns) {
 								path+=" --> "+patharr[i];
 							}
 							ns.tprint(path);
-
 							ns.exit();
 						}
 					}
 
 					// show sublinks
 					showmap(svrarr[j], server, levels + 1, hidebig,target);
-
-
 				}
-
-
 			}
 		}
 	}

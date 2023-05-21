@@ -2,9 +2,8 @@
 export async function main(ns) {
 
 	const server = 	ns.args.slice(0);
-        const servera = server.length;
     const red = "\u001b[38;5;009m";
-    const yorn = await ns.prompt(`Are you sure you want to delete the servers named ${server}?`);
+    const yorn = await ns.prompt(`Are you sure you want to delete the server(s) named ${server}?`);
 
     if (yorn === true) {
         await ns.sleep(1000);
@@ -36,6 +35,6 @@ export async function main(ns) {
 
     for (const servers of server) {
 	    ns.deleteServer(servers);
-	    ns.tprint(`${red}Removed Server(s) ${servers}`);
+	    ns.tprint(`${red}Removed Server ${servers}`);
     }
 }

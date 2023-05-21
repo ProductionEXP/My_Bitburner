@@ -1,29 +1,50 @@
-Last reset was: 20-5-2023 11:01am
-Active BitNode - 4.1
-______________________________________________________________________________________________
-Notes:
-    Next BitNode 5.1
+Last reset was: 20-5-2023 4:30pm
+Active BitNode - 2.1
 ______________________________________________________________________________________________
 Source Files
-    Source-File 1: Source Genesis - Level 2 / 3
-        This Source-File lets the player start with 32GB of RAM on his/her home computer. 
-        It also increases all of the player's multipliers by:
-            Level 1: 16%
-            Level 2: 24%
-            Level 3: 28%
-
     Source-File -1: Exploits in the BitNodes - Level 1 / 11
         This Source-File can only be acquired with obscure knowledge of the game, javascript, and the web ecosystem.
         It increases all of the player's multipliers by 0.1%
 
         You have found the following exploits:
              * by harnessing the power of the n00dles.
+    
+    Source-File 1: Source Genesis - Level 3 / 3
+        This Source-File lets the player start with 32GB of RAM on his/her home computer. 
+        It also increases all of the player's multipliers by:
+            Level 1: 16%
+            Level 2: 24%
+            Level 3: 28%
+
+    Source-File 4: The Singularity - Level 3 / 3
+        This Source-File lets you access and use the Singularity Functions in every BitNode. Every level of this Source-File reduces the RAM cost of Singularity functions:
+            Level 1: 16x
+            Level 2: 4x
+            Level 3: 1x
+
+    Source-File 5: Artificial Intelligence - Level 3 / 3
+        This Source-File grants a special new stat called Intelligence. Intelligence is unique because it is permanent and persistent (it never gets reset back to 1). However, gaining Intelligence experience is much slower than other stats. 
+        Higher Intelligence levels will boost your production for many actions in the game. In addition, this Source-File will unlock: 
+            The getBitNodeMultipliers() Netscript function
+            Permanent access to Formulas.exe
+            Access to BitNode multiplier information on the Stats page
+            It will also raise all of your hacking-related multipliers by:
+                Level 1: 8%
+                Level 2: 12%
+                Level 3: 14%
+
 ______________________________________________________________________________________________
 Active servers are:
-	Home	- 32.00GB
-    Cores   - 1
+	Home	- 1.05PB
+    Cores   - 4
 
     Other Servers
+    A:      - 524.29TB
+    B:      - 131.07TB
+    C:      - 131.07TB
+    D:      - 262.14TB
+    E:      - 131.07TB
+    F:      - 65.54TB
 
 ______________________________________________________________________________________________
 Scripts

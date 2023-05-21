@@ -10,7 +10,7 @@ export async function main(ns) {
     ns.clearLog(); 
 
     // Constants
-        const targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", ".", "icarus", "w0r1d_d43m0n"];
+        const targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", ".", "icarus"];
         const serverram = ns.getServerMaxRam("home") - ns.getServerUsedRam("home");
 
     // Color Constants
@@ -24,7 +24,7 @@ export async function main(ns) {
             if (ns.getHackingLevel() >  ns.getServerRequiredHackingLevel(target) ) {
                 ns.print(`${green} Hacking level > ${ns.getServerRequiredHackingLevel(target)}, can hack ${target}`)
                 if (serverram > 2.55) {
-                    if (portsnumber(ns) >= 1) {
+                    if (portsnumber(ns) >= ns.getServerNumPortsRequired(target)) {
                         Portem(ns,target);
                         ns.nuke(target);
                         ns.run("Info/netmap.js",1,"seek",target);
