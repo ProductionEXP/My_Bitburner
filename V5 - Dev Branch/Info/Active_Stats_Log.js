@@ -1,5 +1,5 @@
 // Imports
-import { portsnumber } from "/src/Function-Library/Functions.js"
+import { portinfo } from "/src/Function-Library/Functions.js"
 import { progressBar } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
@@ -15,7 +15,7 @@ export async function main(ns) {
 
   while(true){
     ns.clearLog();
-    ns.print(`${green}Number Of Avilible Ports is ${portsnumber(ns)}`);
+    ns.print(`${green}Number Of Avilible Ports is ${portinfo(ns, 'number')}`);
     ns.print(`${green}`);
     ns.print(`${green}Server income ${ns.formatNumber(ns.getTotalScriptIncome()[0])}/s`);
     ns.print(`${orange}Server EXP income ${ns.formatNumber(ns.getTotalScriptExpGain())}/s`);

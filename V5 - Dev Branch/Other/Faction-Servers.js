@@ -1,6 +1,7 @@
 // Imports
-import { portsnumber } from "/src/Function-Library/Functions.js"
+import { portinfo } from "/src/Function-Library/Functions.js"
 import { Portem } from "/src/Function-Library/Functions.js"
+import { traverse } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {
@@ -10,7 +11,7 @@ export async function main(ns) {
     ns.clearLog(); 
 
     // Constants
-        const targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", ".", "icarus"];
+        const targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", "w0r1d_d43m0n", "fulcrumassets"];
         const serverram = ns.getServerMaxRam("home") - ns.getServerUsedRam("home");
 
     // Color Constants
@@ -21,13 +22,16 @@ export async function main(ns) {
     for(const target of targets) {
         ns.tail();
         while (ns.hasRootAccess(target) == false) { 
-            if (ns.getHackingLevel() >  ns.getServerRequiredHackingLevel(target) ) {
-                ns.print(`${green} Hacking level > ${ns.getServerRequiredHackingLevel(target)}, can hack ${target}`)
+            if (ns.getHackingLevel() >=  ns.getServerRequiredHackingLevel(target) ) {
+                ns.print(`${green} Hacking level >= ${ns.getServerRequiredHackingLevel(target)}, can hack ${target}`)
                 if (serverram > 2.55) {
-                    if (portsnumber(ns) >= ns.getServerNumPortsRequired(target)) {
+                    if (portinfo(ns, 'number') >= ns.getServerNumPortsRequired(target)) {
                         Portem(ns,target);
                         ns.nuke(target);
-                        ns.run("Info/netmap.js",1,"seek",target);
+                        for(const nextpath of traverse(ns, target)) {
+                            ns.singularity.connect(nextpath);
+                        }
+                        ns.singularity.installBackdoor();
                         await ns.sleep(5000);
                     } 
 

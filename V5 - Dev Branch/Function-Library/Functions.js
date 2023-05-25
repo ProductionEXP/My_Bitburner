@@ -1,67 +1,21 @@
 /** @param {NS} ns */
-export function tail(ns, input) {
-
-    if (input === "TailCostum") {
-        return "tailC"
+export function portinfo(ns, runtype) {
+    const aports = [];
+    const ports = ["BruteSSH.exe", "FTPCrack.exe", "relaySMTP.exe", "HTTPWorm.exe", "SQLInject.exe"];
+    for(const port of ports) {
+        if(ns.fileExists(port, "home")) {aports.push(port)}
     }
-
-    if (input === "TailFull") {
-        return "tailF"
-    }
-
-    if (input === "LogFull") {
-        return "logF"
-    }
-
-    if (input === "Default") {
-        return "logC"
-    }
-
-    if (input != "Default" || "TailFull" || "TailCostum" || "LogFull") {
-        return "fail"
-    }
-
-}
-
-export function portsnumber(ns) {
-
-    let shh = 0;
-    let ftpc = 0;
-    let smtp = 0;
-    let httpw = 0;
-    let sqli = 0;
-
-    if (ns.fileExists("BruteSSH.exe", "home")) {
-        shh = 1;
-    } 
-
-    if (ns.fileExists("FTPCrack.exe" ,"home")) {
-        ftpc = 1;
-    }
-
-    if (ns.fileExists("relaySMTP.exe" ,"home")) {
-        smtp = 1;
-    }
-
-    if (ns.fileExists("HTTPWorm.exe" ,"home")) {
-        httpw = 1;
-    }   
-
-    if (ns.fileExists("SQLInject.exe" ,"home")) {
-        sqli = 1;
-    }
-    
-    const portsnumber = (shh+ftpc+smtp+httpw+sqli);
-    return portsnumber
-
+    if(runtype === 'number') {return aports.length}
+    if(runtype === 'what') {return aports}
 }
 
 export function CurentHackServers(ns) {
-    const portsnumber1 = portsnumber(ns);
+    const portsnumber1 = portinfo(ns, 'number');
     const servers = [];
-    for(const server of AllServers(ns))
-    if(portsnumber1 >= ns.getServerNumPortsRequired(server) && ns.getHackingLevel() >= ns.getServerRequiredHackingLevel(server) && ns.getServerMaxMoney(server) > 0) {
-        servers.push(server)
+    for(const server of AllServers(ns)) {
+        if(portsnumber1 >= ns.getServerNumPortsRequired(server) && ns.getHackingLevel() >= ns.getServerRequiredHackingLevel(server) && ns.getServerMaxMoney(server) > 0) {
+            servers.push(server)
+        }
     }
     return servers
 }
@@ -74,30 +28,6 @@ export function AllServers(ns) {
         }
     }
     return allservers
-}
-
-export function Whatports(ns) {
-    const ports = [];
-    if (ns.fileExists("BruteSSH.exe", "home")) {
-        ports.push('BruteSSH.exe')
-    } 
-
-    if (ns.fileExists("FTPCrack.exe" ,"home")) {
-        ports.push('FTPCrack.exe')
-    }
-
-    if (ns.fileExists("relaySMTP.exe" ,"home")) {
-        ports.push('relaySMTP.exe')
-    }
-
-    if (ns.fileExists("HTTPWorm.exe" ,"home")) {
-        ports.push('HTTPWorm.exe')
-    }   
-
-    if (ns.fileExists("SQLInject.exe" ,"home")) {
-        ports.push('SQLInject.exe')
-    }
-    return ports
 }
 
 export function Portem(ns, target) {
@@ -127,4 +57,32 @@ export function progressBar(progress, length) {
     const fu = '|'
     progress = Math.min(1, progress) || 0
     return `[${fu.repeat(Math.floor(length * progress))}${em.repeat(Math.ceil(length * (1 - progress)))}]`
+}
+
+// Adapted from https://github.com/Nolshine/bitburner-scripts/blob/batching/pather.ns.js
+export function traverse(ns, target, ) {
+    const origin = "home";
+    const path12 = [];
+    path12.push(origin)
+    
+    let nodes = ns.scan(origin); 
+    
+    if (nodes.length === 0){
+        ns.print("failing because there is no possible path.");
+        return -1;
+    }
+    
+    while (nodes.length !== 0) {
+        let node = nodes.pop();
+        if (path.includes(node)){
+            continue;
+        } else {
+            let new_path = traverse(ns, node, target, path12);
+            if (new_path != -1) {
+                return new_path;
+            }
+        }
+    }
+    ns.print("failing because current tree failed.");
+    return -1;
 }

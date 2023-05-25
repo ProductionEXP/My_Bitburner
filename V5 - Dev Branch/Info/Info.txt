@@ -1,8 +1,8 @@
-Last reset was: 20-5-2023 4:30pm
-Active BitNode - 2.1
+Last reset was: 21-5-2023 7:00pm
+Active BitNode - 3.1
 ______________________________________________________________________________________________
 Source Files
-    Source-File -1: Exploits in the BitNodes - Level 1 / 11
+    Source-File -1: Exploits in the BitNodes - Level 2 / 11
         This Source-File can only be acquired with obscure knowledge of the game, javascript, and the web ecosystem.
         It increases all of the player's multipliers by 0.1%
 
@@ -15,6 +15,12 @@ Source Files
             Level 1: 16%
             Level 2: 24%
             Level 3: 28%
+
+    Source-File 2: Rise of the Underworld - Level 1 / 3
+        This Source-File allows you to form gangs in other BitNodes once your karma decreases to a certain value. It also increases the player's crime success rate, crime money, and charisma multipliers by:
+            Level 1: 24%
+            Level 2: 36%
+            Level 3: 42%
 
     Source-File 4: The Singularity - Level 3 / 3
         This Source-File lets you access and use the Singularity Functions in every BitNode. Every level of this Source-File reduces the RAM cost of Singularity functions:
