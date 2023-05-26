@@ -12,7 +12,6 @@ export async function main(ns) {
 		prev1 = active;
 		active = prev1 + prev2;
 		cycle = cycle+1;
-		await ns.sleep(5);
 	}
 	ns.tprint(active);
 }
