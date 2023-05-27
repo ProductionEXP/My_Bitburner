@@ -21,17 +21,17 @@ export async function main(ns) {
     // The loop
     for(const target of targets) {
         ns.tail();
-        while (ns.hasRootAccess(target) == false) { 
+        while (ns.hasRootAccess(target) == false || ns.getServer(target).backdoorInstalled == false) { 
             if (ns.getHackingLevel() >=  ns.getServerRequiredHackingLevel(target) ) {
                 ns.print(`${green} Hacking level >= ${ns.getServerRequiredHackingLevel(target)}, can hack ${target}`)
                 if (serverram > 2.55) {
                     if (portinfo(ns, 'number') >= ns.getServerNumPortsRequired(target)) {
                         Portem(ns,target);
                         ns.nuke(target);
-                        for(const nextpath of traverse(ns, target)) {
+                        for(const nextpath of traverse(ns, "home",target)) {
                             ns.singularity.connect(nextpath);
                         }
-                        ns.singularity.installBackdoor();
+                        await ns.singularity.installBackdoor();
                         await ns.sleep(5000);
                     } 
 

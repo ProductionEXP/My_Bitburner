@@ -26,6 +26,7 @@ export async function main(ns) {
       let hacklevlpresent = ((ns.getHackingLevel()/2500));
       let moneypresent = ((ns.getPlayer().money/100000000000));
       let augmentpresent = ((augmentsowned/30));
+      let mc = 0; let hc =0; let ac = 0; let done = 0;
       if(ns.getHackingLevel() > 2500) {hacklevlpresent = 1}
       if(ns.getPlayer().money > 100000000000) {moneypresent = 1}
       if(augmentsowned > 30) {augmentpresent = 1}
@@ -34,19 +35,30 @@ export async function main(ns) {
       ns.print(progressBar(fl1ghtpresent, 50));
       ns.print("");
 
+      if((ac+mc+hc) === 3) {done = 1}
+
       if(ns.getHackingLevel() < 2500) {
         ns.print(`${green}Hacking Level ${progressBar((hacklevlpresent),10)}`);
+        hc = 0;
       }
+
+      else {hc = 1}
 
       if(ns.getPlayer().money < 100000000000) {
         ns.print(`${green}Money ${progressBar((moneypresent),10)}`);
+        mc = 0;
       }
+
+      else {mc = 1}
 
       if(augmentsowned < 30) {
         ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),10)}`)
+        ac = 0;
       }
 
-      if((ns.getHackingLevel() > 2500) && (ns.getPlayer().money > 100000000000) && (augmentsowned > 30) && (t1 <= 60)) {
+      else {ac = 1}
+
+      if(((ns.getHackingLevel() > 2500) && (ns.getPlayer().money > 100000000000) && (augmentsowned > 30) && (t1 <= 60)) || done === 1) {
         ns.print('Fl1ght.exe Compleated')
         t1 = t1+1
       }
