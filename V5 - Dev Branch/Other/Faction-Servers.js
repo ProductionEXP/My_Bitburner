@@ -32,6 +32,9 @@ export async function main(ns) {
                             ns.singularity.connect(nextpath);
                         }
                         await ns.singularity.installBackdoor();
+                        for(const nextpath1 of traverse(ns, target,"home")) {
+                            ns.singularity.connect(nextpath1);
+                        }
                         await ns.sleep(5000);
                     } 
 

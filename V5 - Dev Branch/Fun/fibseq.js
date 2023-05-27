@@ -1,6 +1,7 @@
 /** @param {NS} ns */
 export async function main(ns) {
-	const requestedcycles = ns.args[0];
+	let requestedcycles = ns.args[0];
+	if(requestedcycles === "") {requestedcycles = 1476}
 	let active = 0;
 	let prev1 = 1;
 	let prev2 = 0;
