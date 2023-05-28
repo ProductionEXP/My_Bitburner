@@ -11,7 +11,10 @@ export async function main(ns) {
     ns.clearLog(); 
 
     // Constants
-        const targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", "w0r1d_d43m0n", "fulcrumassets"];
+        let yorn = true;
+        const ownedaugmentations = ns.singularity.getOwnedAugmentations();
+        let targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", "fulcrumassets"];
+        if(ownedaugmentations.includes("The Red Pill")) {targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", "fulcrumassets", "w0r1d_d43m0n"]}
         const serverram = ns.getServerMaxRam("home") - ns.getServerUsedRam("home");
 
     // Color Constants
@@ -26,14 +29,18 @@ export async function main(ns) {
                 ns.print(`${green} Hacking level >= ${ns.getServerRequiredHackingLevel(target)}, can hack ${target}`)
                 if (serverram > 2.55) {
                     if (portinfo(ns, 'number') >= ns.getServerNumPortsRequired(target)) {
-                        Portem(ns,target);
-                        ns.nuke(target);
-                        for(const nextpath of traverse(ns, "home",target)) {
-                            ns.singularity.connect(nextpath);
-                        }
-                        await ns.singularity.installBackdoor();
-                        for(const nextpath1 of traverse(ns, target,"home")) {
-                            ns.singularity.connect(nextpath1);
+                        if(target === "w0r1d_d43m0n") {yorn = await ns.promt('Are you sure you want to hack w0r1d_d43m0n and end this Bitnode?')}
+                        if(yorn === true) {
+                            Portem(ns,target);
+                            ns.nuke(target);
+                            for(const nextpath of traverse(ns, "home",target)) {
+                                ns.singularity.connect(nextpath);
+                            }
+                            await ns.singularity.installBackdoor();
+                            for(const nextpath1 of traverse(ns, target,"home")) {
+                                ns.singularity.connect(nextpath1);
+                            }
+                            await ns.sleep(100);
                         }
                         await ns.sleep(5000);
                     } 
@@ -57,6 +64,11 @@ export async function main(ns) {
                 await ns.sleep(5000);
                 ns.clearLog();
             }
-        }          
+
+        }
+
+        if(!ownedaugmentations.includes("The Red Pill")) {
+            return ns.print('Need the augmentation "The Red Pill" to hack "w0r1d_d43m0n"\nGet the augmentation from the Daedalus faction')
+        }         
     } 
 }
