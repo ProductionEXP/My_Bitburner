@@ -59,7 +59,7 @@ export function progressBar(progress, length) {
     return `[${fu.repeat(Math.floor(length * progress))}${em.repeat(Math.ceil(length * (1 - progress)))}]`
 }
 
-// Adapted from https://github.com/Nolshine/bitburner-scripts/blob/batching/pather.ns.js
+// Adapted from https://github.com/Nolshine/bitburner-scripts/blob/batching/pather.ns.js - Not my code
 export function traverse(ns, origin, target, cur_path=[]) {
     let path = cur_path.slice();
     path.push(origin);

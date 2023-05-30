@@ -51,7 +51,7 @@ export async function main(ns) {
 
       else {mc = 1}
 
-      if(augmentsowned < 30) {
+      if(augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement) {
         ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),26)} ${ns.formatNumber(augmentpresent*100, 0)}%`)
         ac = 0;
       }

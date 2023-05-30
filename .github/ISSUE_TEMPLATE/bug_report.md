@@ -12,8 +12,9 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. File
-2. Line numbers
+1. File(s)
+2. Line number(s)
+3. If possible attach in-game screeshots or provide the text that is given
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -23,7 +24,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - Browser or Steam
- - Script Version [e.g. PRV 1.04.0.1]
+ - Script Version [e.g. V4.0.0]
  - Game Version
 
 **Additional context**

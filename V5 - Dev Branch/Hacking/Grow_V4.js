@@ -9,6 +9,5 @@ export async function main(ns) {
         if (ns.getServerMoneyAvailable(target) > moneyThresh) {
             await ns.hack(target);
         }
-        await ns.sleep(5);
     }
 }

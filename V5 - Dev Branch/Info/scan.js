@@ -1,5 +1,4 @@
-// https://github.com/alainbryden/bitburner-scripts/blob/main/scan.js
-
+// https://github.com/alainbryden/bitburner-scripts/blob/main/scan.js - Not my code
 /**
  * @param {NS} ns
  * @returns interactive server map

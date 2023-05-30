@@ -17,4 +17,4 @@ Folders, they help you find what scripts you are looking for all scripts work
 Most developed (stable) version of the code. Final release date 5-16-2023.
 
 ### V5
-Brand new in development. 
+Brand new in development. USES MULTIPLE APIs LIST TO COME UPPON RELEASE 

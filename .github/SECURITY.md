@@ -7,10 +7,10 @@ using is no longer supported please update before adding an issue.
 
 | Version      | Supported          |
 | -------      | ------------------ |
-| PRV 1.04.0.1 | :white_check_mark: |
-| V 1.03.1     | :white_check_mark: |
-| V 1.03.0     | :x:                |
-| V 1.0.DEV    | :white_check_mark: |
+| V4.0.0       | :white_check_mark: |
+| V5.1.0       | :x:                |
+| V5.1.1       | :white_check_mark: |
+
 
 ## Reporting a Vulnerability
 

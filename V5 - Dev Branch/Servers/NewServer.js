@@ -32,7 +32,7 @@ export async function main(ns) {
 			ns.tprint("RAM value must be a power of 2.");
 			ns.tprint("Your value was ", ram);
 			ns.tprint("Accepted values are 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, or max");
-			ns.tprint("Max ram multiplier for this bitnode is " + (ns.getBitNodeMultipliers().PurchasedServerMaxRam))
+			ns.tprint("Max ram multiplier for this bitnode is " + (ns.getBitNodeMultipliers().PurchasedServerMaxRam));
 			return ns.tprint(`${red}Script failed.`);
 		}
 

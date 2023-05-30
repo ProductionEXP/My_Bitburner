@@ -7,8 +7,7 @@ export async function main(ns) {
             await ns.weaken(target);
         }
         if (ns.getServerSecurityLevel(target) < securityThresh) {
-            await ns.weaken(target);
+            await ns.hack(target);
         }
-        await ns.sleep(5);
     }
 }
