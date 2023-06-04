@@ -9,7 +9,8 @@ using is no longer supported please update before adding an issue.
 | -------      | ------------------ |
 | V4.0.0       | :white_check_mark: |
 | V5.1.0       | :x:                |
-| V5.1.1       | :white_check_mark: |
+| V5.1.1       | :x:                |
+| V5.1.2       | :white_check_mark: |
 
 
 ## Reporting a Vulnerability
