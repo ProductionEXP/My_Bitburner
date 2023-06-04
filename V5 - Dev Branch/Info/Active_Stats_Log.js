@@ -1,6 +1,8 @@
 // Imports
 import { portinfo } from "/src/Function-Library/Functions.js"
 import { progressBar } from "/src/Function-Library/Functions.js"
+import { AllServers } from "/src/Function-Library/Functions.js"
+
 
 /** @param {NS} ns */
 export async function main(ns) {
@@ -30,9 +32,9 @@ export async function main(ns) {
         date = event.toLocaleString('en-GB', { timeZone: 'MST', dateStyle: 'long'});
 
         if(t1>=60) {fl1ghtexe = "Done"} else {fl1ghtexe = "In progress"}
-        if(wdt1>=60) {w0r1dd43m0n = "Done"} else {w0r1dd43m0n = "In progress"}
+        if(wdt1>=60 && t1>=60) {w0r1dd43m0n = "Done"} else {w0r1dd43m0n = "In progress"}
         ns.clearLog();
-        if(portinfo(ns, 'number') < 5) {ns.print(`${green}Avilible Ports is ${portinfo(ns, 'number')} \n `)}
+        if(portinfo(ns, 'number') < 5) {ns.print(`${green}${portinfo(ns, 'number')} Avilible Ports \n `)}
         ns.print(`${green}${time}`);
         ns.print(`${green}${date} \n `);
         ns.print(`${green}--Server Income Stats--`)
@@ -47,7 +49,8 @@ export async function main(ns) {
         ns.print(`${yellow}Dexterity    - ${ns.formatNumber(ns.getPlayer().skills.dexterity, 3, 100000)}`);
         ns.print(`${yellow}Agility      - ${ns.formatNumber(ns.getPlayer().skills.agility, 3, 100000)}`);
         ns.print(`${purple}Charisma     - ${ns.formatNumber(ns.getPlayer().skills.charisma, 3, 100000)}`);
-        ns.print(`${blue}Intelligence - ${ns.formatNumber(ns.getPlayer().skills.intelligence, 3, 100000)} \n `);
+        ns.print(`${blue}Intelligence - ${ns.formatNumber(ns.getPlayer().skills.intelligence, 3, 100000)}`);
+        ns.print(`${green}Servers      - ${AllServers(ns, 'home').slice().length} / ${Math.round(ns.getBitNodeMultipliers().PurchasedServerLimit*25)} \n `)
         ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`);
         ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `);
         if((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) {
@@ -62,7 +65,8 @@ export async function main(ns) {
             if(augmentsowned > 30) {augmentpresent = 1}
             const fl1ghtpresent = ((hacklevlpresent+moneypresent+augmentpresent)/3);
 
-            ns.print(`${green}${progressBar(fl1ghtpresent, 50)} ${ns.formatNumber(fl1ghtpresent*100,0)}% \n `);
+            ns.print(`${green}${progressBar(fl1ghtpresent, 50)} ${ns.formatNumber(fl1ghtpresent*100,0)}%`);
+            ns.print(` `);
 
             if(ns.getHackingLevel() < 2500) {
                 ns.print(`${green}Hacking Level           ${progressBar((hacklevlpresent),26)} ${ns.formatNumber(hacklevlpresent*100, 0)}%`);
@@ -105,7 +109,8 @@ export async function main(ns) {
                     if((portinfo(ns, 'number')) > worlddemonpnum) {wdportpersent = 1}
                     const worlddemonpresent = ((wdhacklevlpresent+wdportpersent)/2);
                     
-                    ns.print(`${green}${progressBar(worlddemonpresent, 50)} ${ns.formatNumber(worlddemonpresent*100,0)}%\n`);
+                    ns.print(`${green}${progressBar(worlddemonpresent, 50)} ${ns.formatNumber(worlddemonpresent*100,0)}%`);
+                    ns.print(` `);
 
                     if((ns.getHackingLevel() < worlddemonhlv)) {
                         ns.print(`${green}Hacking Level           ${progressBar((wdhacklevlpresent),26)} ${ns.formatNumber(wdhacklevlpresent*100, 0)}%`);
