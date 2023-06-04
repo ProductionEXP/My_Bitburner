@@ -12,7 +12,7 @@ export function portinfo(ns, runtype) {
 export function CurentHackServers(ns) {
     const portsnumber1 = portinfo(ns, 'number');
     const servers = [];
-    for(const server of AllServers(ns)) {
+    for(const server of AllServers(ns, "all")) {
         if(portsnumber1 >= ns.getServerNumPortsRequired(server) && ns.getHackingLevel() >= ns.getServerRequiredHackingLevel(server) && ns.getServerMaxMoney(server) > 0) {
             servers.push(server)
         }
@@ -20,14 +20,24 @@ export function CurentHackServers(ns) {
     return servers
 }
 
-export function AllServers(ns) {
+export function AllServers(ns, alho) {
     const allservers = ["home"];
-    for (const server of allservers) {
-        for (const servers of ns.scan(server)) {
-            if(!allservers.includes(servers)) {allservers.push(servers)}
+    const allhomeservers = ["n00dles", "foodnstuff", "sigma-cosmetics", "joesguns", "hong-fang-tea", "harakiri-sushi", "iron-gym", "darkweb"];
+    const homeservers = [];
+    if(alho === "all") {
+        for (const server of allservers) {
+            for (const servers of ns.scan(server)) {
+                if(!allservers.includes(servers)) {allservers.push(servers)}
+            }
+        }
+        return allservers
+    }
+    if(alho === "home") {
+        for (const servers of ns.scan('home')) {
+            if(!allhomeservers.includes(servers)) {homeservers.push(servers)}
         }
     }
-    return allservers
+    return homeservers
 }
 
 export function Portem(ns, target) {

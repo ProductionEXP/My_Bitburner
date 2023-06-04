@@ -5,7 +5,6 @@ import { traverse } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {
-    ns.tail();
     ns.disableLog("ALL");
     ns.clearLog(); 
 
@@ -22,13 +21,12 @@ export async function main(ns) {
 
     // The loop
     for(const target of targets) {
-        ns.tail();
         while (ns.hasRootAccess(target) == false || ns.getServer(target).backdoorInstalled == false) { 
             if (ns.getHackingLevel() >=  ns.getServerRequiredHackingLevel(target) ) {
                 ns.print(`${green} Hacking level >= ${ns.getServerRequiredHackingLevel(target)}, can hack ${target}`)
                 if (serverram > 2.55) {
                     if (portinfo(ns, 'number') >= ns.getServerNumPortsRequired(target)) {
-                        if(target === "w0r1d_d43m0n") {yorn = await ns.promt('Are you sure you want to hack w0r1d_d43m0n and end this Bitnode?')}
+                        if(target === "w0r1d_d43m0n") {yorn = await ns.prompt('Are you sure you want to hack w0r1d_d43m0n and end this Bitnode?')}
                         if(yorn === true) {
                             Portem(ns,target);
                             ns.nuke(target);
@@ -61,7 +59,7 @@ export async function main(ns) {
                 ns.clearLog();
             }
         }
-        if(!ownedaugmentations.includes("The Red Pill")) {
+        if((!ownedaugmentations.includes("The Red Pill")) && (target === "w0r1d_d43m0n")) {
             return ns.print('Need the augmentation "The Red Pill" to hack "w0r1d_d43m0n"\nGet the augmentation from the Daedalus faction')
         }         
     } 

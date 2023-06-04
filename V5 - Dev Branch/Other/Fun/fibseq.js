@@ -1,5 +1,6 @@
 /** @param {NS} ns */
 export async function main(ns) {
+	ns.tail();
 	let requestedcycles = ns.args[0];
 	if(requestedcycles === "") {requestedcycles = 1476}
 	if(requestedcycles > 1476) {requestedcycles = 1476}

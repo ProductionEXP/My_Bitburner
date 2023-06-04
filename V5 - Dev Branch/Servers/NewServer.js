@@ -1,3 +1,5 @@
+import { AllServers } from "/src/Function-Library/Functions.js"
+
 /** @param {NS} ns */
 const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
 const files = ["Grow_V4.js", "Weaken_V4.js"];
@@ -12,6 +14,10 @@ export async function main(ns) {
 	const names = ns.args.slice(1);
 
 	for(const name of names) {
+		if(AllServers(ns, "home").includes(name)) {
+			ns.tprint(`${red}Server with a name of ${name} already exists`)
+			continue; 
+		}
 		if (ram === "max") {
 			let max= 0;
 	    	for (let i = 20; i >= 1; i--) {

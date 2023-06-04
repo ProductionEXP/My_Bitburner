@@ -1,3 +1,4 @@
+// Not my code - unknown orgin
 /** @param {NS} ns */
 export async function main(ns) {
 	ns.tprint(((b = "\n") => {
