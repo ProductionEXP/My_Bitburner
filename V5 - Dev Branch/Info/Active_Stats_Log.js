@@ -14,11 +14,13 @@ export async function main(ns) {
     const yellow = "\u001b[38;5;226m";
     const purple = "\u001b[38;5;057m";
     const blue = "\u001b[38;5;012m";
-    const red = "\u001b[38;5;009m";
+    const redred = "\u001b[38;5;009m";
+    const red = "\u001b[38;5;160m";
 
     const augmentsowned = ns.singularity.getOwnedAugmentations().slice().length;
     const ownedaugmentations = ns.singularity.getOwnedAugmentations();
-    let t1 = 0; let done = 0; let worlddemonhlv = 0; let worlddemonpnum = 0; let TRP = ""; let fl1ghtexe = ""; let w0r1dd43m0n = ""; let wdt1 = 0; let event = ""; let time = ""; let date = "";
+    const gymclass = "agi" || "dex " || "def" || "str";
+    let t1 = 0; let done = 0; let worlddemonhlv = 0; let worlddemonpnum = 0; let TRP = false; let fl1ghtexe = ""; let w0r1dd43m0n = ""; let wdt1 = 0; let event = ""; let time = ""; let date = ""; let worktype = ""; let activegymclass = ""; let hplow = "";
 
     if(ownedaugmentations.includes("The Red Pill")) {
         worlddemonhlv = ns.getServerRequiredHackingLevel('w0r1d_d43m0n');
@@ -32,16 +34,21 @@ export async function main(ns) {
         date = event.toLocaleString('en-GB', { timeZone: 'MST', dateStyle: 'long'});
 
         if(t1>=60) {fl1ghtexe = "Done"} else {fl1ghtexe = "In progress"}
-        if(wdt1>=60 && t1>=60) {w0r1dd43m0n = "Done"} else {w0r1dd43m0n = "In progress"}
+        if(wdt1>=60 && t1>=60 && TRP) {w0r1dd43m0n = "Done"} else {w0r1dd43m0n = "In progress"}
         ns.clearLog();
+
+        
         if(portinfo(ns, 'number') < 5) {ns.print(`${green}${portinfo(ns, 'number')} Avilible Ports \n `)}
+
         ns.print(`${green}${time}`);
         ns.print(`${green}${date} \n `);
+
         ns.print(`${green}--Server Income Stats--`)
         ns.print(`${green}Server income ${ns.formatNumber(ns.getTotalScriptIncome()[0])}/s`);
         ns.print(`${orange}Server EXP income ${ns.formatNumber(ns.getTotalScriptExpGain())}/s \n `);
+        if((ns.getPlayer().hp.max / ns.getPlayer().hp.current) <= 0.1) {hplow = " - !!LOW HP!!"}
         ns.print(`${green}--Player Stats--`)
-        ns.print(`${red}Health       - ${ns.getPlayer().hp.current} / ${ns.getPlayer().hp.max}`)
+        ns.print(`${red}Health       - ${ns.getPlayer().hp.current} / ${ns.getPlayer().hp.max}${redred}${hplow}`)
         ns.print(`${green}Money        - $${ns.formatNumber(ns.getPlayer().money)}`);
         ns.print(`${orange}Hacking      - ${ns.formatNumber(ns.getPlayer().skills.hacking, 3, 100000)}`);
         ns.print(`${yellow}Strength     - ${ns.formatNumber(ns.getPlayer().skills.strength, 3, 100000)}`);
@@ -51,8 +58,34 @@ export async function main(ns) {
         ns.print(`${purple}Charisma     - ${ns.formatNumber(ns.getPlayer().skills.charisma, 3, 100000)}`);
         ns.print(`${blue}Intelligence - ${ns.formatNumber(ns.getPlayer().skills.intelligence, 3, 100000)}`);
         ns.print(`${green}Servers      - ${AllServers(ns, 'home').slice().length} / ${Math.round(ns.getBitNodeMultipliers().PurchasedServerLimit*25)} \n `)
-        ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`);
-        ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `);
+
+        if(ns.singularity.isBusy() && !ns.singularity.isFocused()) {
+            // note for later: 5cycles in one second use that for math for cycles > seconds for later
+            worktype = ns.singularity.getCurrentWork().type;
+            ns.print(`${green}${worktype}`);
+            if(worktype === "CRIME") {ns.print(`${green}You are attempting to ${ns.singularity.getCurrentWork().crimeType} \n `)}
+            if(worktype === "FACTION") {
+                ns.print(`${green}Working for ${ns.singularity.getCurrentWork().factionName} - ${ns.singularity.getCurrentWork().factionWorkType}`);
+                ns.print(`${green}${ns.formatNumber(ns.singularity.getFactionRep(ns.singularity.getCurrentWork().factionName))} rep \n `);
+            }
+            if(worktype === "CREATE_PROGRAM") {ns.print(`${green}Creating program ${ns.singularity.getCurrentWork().programName} \n `)}
+            if(worktype === "COMPANY") {
+                ns.print(`${green}Working for ${ns.singularity.getCurrentWork().companyName}`)
+                ns.print(`${green}${ns.formatNumber(ns.singularity.getCompanyRep(ns.singularity.getCurrentWork().companyName))} rep \n `)
+            }
+            if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {ns.print(`${green}You are taking a ${ns.singularity.getCurrentWork().classType} course at ${ns.singularity.getCurrentWork().location} \n `)}
+            if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType === gymclass) {
+                if(ns.singularity.getCurrentWork().classType === "str") {activegymclass = "strength"}
+                if(ns.singularity.getCurrentWork().classType === "dex") {activegymclass = "dexterity"}
+                if(ns.singularity.getCurrentWork().classType === "def") {activegymclass = "defense"}
+                if(ns.singularity.getCurrentWork().classType === "agi") {activegymclass = "agility"}
+                ns.print(`${green}You are training your ${activegymclass} at ${ns.singularity.getCurrentWork().location} \n `)
+            }
+        }
+
+        if(fl1ghtexe === "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
+        if(fl1ghtexe === "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
+
         if((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) {
             ns.print(`${green}~~Fl1ght.exe Progress~~`);
 

@@ -5,9 +5,12 @@ export async function main(ns) {
     while (true) {
         while (ns.getServerSecurityLevel(target) > securityThresh) {
             await ns.weaken(target);
+            await ns.sleep(15);
         }
         if (ns.getServerSecurityLevel(target) < securityThresh) {
             await ns.hack(target);
+            await ns.sleep(15);
         }
+        await ns.sleep(15);
     }
 }
