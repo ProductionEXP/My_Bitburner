@@ -60,7 +60,6 @@ export async function main(ns) {
         ns.print(`${green}Servers      - ${AllServers(ns, 'home').slice().length} / ${Math.round(ns.getBitNodeMultipliers().PurchasedServerLimit*25)} \n `)
 
         if(ns.singularity.isBusy() && !ns.singularity.isFocused()) {
-            // note for later: 5cycles in one second use that for math for cycles > seconds for later
             worktype = ns.singularity.getCurrentWork().type;
             ns.print(`${green}${worktype}`);
             if(worktype === "CRIME") {ns.print(`${green}You are attempting to ${ns.singularity.getCurrentWork().crimeType} \n `)}
@@ -70,23 +69,27 @@ export async function main(ns) {
             }
             if(worktype === "CREATE_PROGRAM") {ns.print(`${green}Creating program ${ns.singularity.getCurrentWork().programName} \n `)}
             if(worktype === "COMPANY") {
-                ns.print(`${green}Working for ${ns.singularity.getCurrentWork().companyName}`)
-                ns.print(`${green}${ns.formatNumber(ns.singularity.getCompanyRep(ns.singularity.getCurrentWork().companyName))} rep \n `)
+                ns.print(`${green}Working for ${ns.singularity.getCurrentWork().companyName}`);
+                ns.print(`${green}${ns.formatNumber(ns.singularity.getCompanyRep(ns.singularity.getCurrentWork().companyName))} rep \n `);
             }
-            if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {ns.print(`${green}You are taking a ${ns.singularity.getCurrentWork().classType} course at ${ns.singularity.getCurrentWork().location} \n `)}
+            if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {
+                ns.print(`${green}You are taking a ${ns.singularity.getCurrentWork().classType} course at ${ns.singularity.getCurrentWork().location}`);
+                ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
+            }
             if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType === gymclass) {
                 if(ns.singularity.getCurrentWork().classType === "str") {activegymclass = "strength"}
                 if(ns.singularity.getCurrentWork().classType === "dex") {activegymclass = "dexterity"}
                 if(ns.singularity.getCurrentWork().classType === "def") {activegymclass = "defense"}
                 if(ns.singularity.getCurrentWork().classType === "agi") {activegymclass = "agility"}
-                ns.print(`${green}You are training your ${activegymclass} at ${ns.singularity.getCurrentWork().location} \n `)
+                ns.print(`${green}You are training your ${activegymclass} at ${ns.singularity.getCurrentWork().location}`);
+                ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
             }
         }
 
         if(fl1ghtexe === "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
         if(fl1ghtexe === "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
 
-        if((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) {
+        if(((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) && !ns.getPlayer().factions.includes("Daedalus")) {
             ns.print(`${green}~~Fl1ght.exe Progress~~`);
 
             let hacklevlpresent = (ns.getHackingLevel()/2500);
@@ -130,7 +133,7 @@ export async function main(ns) {
   
         if(t1>= 60 && done === 1) {ns.print(`${green}Fl1ght.exe Done`)}
 
-        if((ns.getHackingLevel() > 2500 && ns.getPlayer().money > 100000000000 && augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement && TRP) && ((ns.getHackingLevel() < worlddemonhlv) || ((portinfo(ns, 'number')) < worlddemonpnum))) {
+        if(((ns.getHackingLevel() > 2500 && ns.getPlayer().money > 100000000000 && augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement && TRP) && ((ns.getHackingLevel() < worlddemonhlv)) || ((portinfo(ns, 'number')) < worlddemonpnum)) || TRP) {
             if (wdt1 <= 60) {
                 if(ownedaugmentations.includes("The Red Pill")) {
                     ns.print(`${green}~~w0r1d_d43m0n Progress~~`);
