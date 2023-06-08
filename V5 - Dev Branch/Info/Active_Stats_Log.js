@@ -29,6 +29,7 @@ export async function main(ns) {
     }
 
     while(true){
+        ns.setTitle(`Overview`);
         event = new Date();
         time = event.toLocaleString('en-GB', { timeZone: 'MST', timeStyle: 'medium', hour12: true});
         date = event.toLocaleString('en-GB', { timeZone: 'MST', dateStyle: 'long'});
