@@ -99,3 +99,12 @@ export function traverse(ns, origin, target, cur_path=[]) {
     ns.print("failing because current tree failed.");
     return -1;
 }
+
+// Stock functions from now on
+export function stockBnS(ns, company, shares, LorS, BorS) {
+    if(LorS === "short" && BorS === "buy") {ns.stock.buyShort(company, shares); return("Shorted " + shares + "shares of " + company)}
+    if(LorS === "long" && BorS === "buy") {ns.stock.buyStock(company, shares); return("Bought " + shares + "shares of " + company)}
+    if(LorS === "short" && BorS === "sell") {ns.stock.sellShort(company, shares); return("Short sold " + shares + "shares of " + company)}
+    if(LorS === "long" && BorS === "sell") {ns.stock.sellStock(company, shares); return("Sold " + shares + "shares of " + company)}
+    return("Failed")
+}
