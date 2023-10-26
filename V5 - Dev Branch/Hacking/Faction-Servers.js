@@ -10,7 +10,6 @@ export async function main(ns) {
 
     // Constants
     let yorn = true;
-    const augmentsowned = ns.singularity.getOwnedAugmentations().slice().length;
     const ownedaugmentations = ns.singularity.getOwnedAugmentations();
     let targets = ["CSEC", "avmnite-02h", "I.I.I.I", "run4theh111z", "fulcrumassets"];
     const factions = ["CyberSec", "NiteSec", "The Black Hand", "BitRunners", "Daedalus"];
