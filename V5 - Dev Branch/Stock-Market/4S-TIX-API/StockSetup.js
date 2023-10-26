@@ -24,14 +24,18 @@ export async function main(ns) {
         if(!ns.stock.hasWSEAccount()) {
             yorn = await ns.prompt('Do you want to buy a WSE account for $?');
             if(yorn === true) {ns.stock.purchaseWseAccount()}
-            ns.print(`${green}This scirpt requires a WSE account`);
-            ns.exit()
+            else {
+                ns.print(`${green}This scirpt requires a WSE account`);
+                ns.exit()
+            }
         }
         if(!ns.stock.hasTIXAPIAccess()) {
             yorn = await ns.prompt('Do you want to buy TIX API access for $?')
             if(yorn === true) {ns.stock.purchaseTixApi()}
-            ns.print(`${green}This scirpt requires TIX API access`);
-            ns.exit()
+            else {
+                ns.print(`${green}This scirpt requires TIX API access`);
+                ns.exit()
+            }
         }
     }
 
