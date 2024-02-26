@@ -31,14 +31,7 @@ export function main(ns) {
         },
         myHackLevel = ns.getHackingLevel(),
         serverInfo = (serverName) => {
-            // Costs 2 GB. If you can't don't need backdoor links, uncomment and use the alternate implementations below
             return ns.getServer(serverName)
-            /* return {
-                requiredHackingSkill: ns.getServerRequiredHackingLevel(serverName),
-                hasAdminRights: ns.hasRootAccess(serverName),
-                purchasedByPlayer: serverName.includes('daemon') || serverName.includes('hacknet'),
-                backdoorInstalled: true // No way of knowing without ns.getServer
-            } */
         },
         createServerEntry = serverName => {
             let server = serverInfo(serverName),
@@ -73,19 +66,15 @@ export function main(ns) {
             return output
         },
         ordering = (serverA, serverB) => {
-            // Sort servers with fewer connections towards the top.
             let orderNumber = ns.scan(serverA).length - ns.scan(serverB).length
-            // Purchased servers to the very top
             orderNumber = orderNumber != 0 ? orderNumber
                 : serverInfo(serverB).purchasedByPlayer - serverInfo(serverA).purchasedByPlayer
-            // Hack: compare just the first 2 chars to keep purchased servers in order purchased
             orderNumber = orderNumber != 0 ? orderNumber
                 : serverA.slice(0, 2).toLowerCase().localeCompare(serverB.slice(0, 2).toLowerCase())
 
             return orderNumber
         }
 
-    // refresh css (in case it changed)
     doc.getElementById("scanCSS")?.remove()
     doc.head.insertAdjacentHTML('beforeend', css)
     let servers = ["home"],

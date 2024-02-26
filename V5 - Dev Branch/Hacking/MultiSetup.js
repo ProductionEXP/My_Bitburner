@@ -36,8 +36,8 @@ export async function main(ns) {
                 let moneyThresh = ns.getServerMaxMoney(target) * 0.75;
                 let securityThresh = ns.getServerMinSecurityLevel(target) + 1;
 
-                ns.exec("Hacking/Grow_V4.js", server, v3t, target, moneyThresh);
-                ns.exec("Hacking/Weaken_V4.js", server, v3t, target, securityThresh);
+                ns.exec("Hacking/HG.js", server, v3t, target, moneyThresh, 'grow');
+                ns.exec("Hacking/HG.js", server, v3t, target, securityThresh, 'weaken');
             }
         }
     }
