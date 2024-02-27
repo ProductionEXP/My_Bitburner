@@ -19,7 +19,7 @@ export async function main(ns) {
 
         if (ram_t < serverram) {   
             ns.tprint("RAM used per set of scripts is: ", ns.formatRam(ram_f,1),". ", targeta," targets, for a total of ", ns.formatRam(ram_t,1), ". At ", ns.formatNumber(v3t), " threads each for a grand total of ",ns.formatRam(v3t*ram_t),", Server has ", ns.formatRam(serverram-(v3t*ram_t))," available.");
-            ns.tprint("Server's name is ", server, "\n ")
+            ns.tprint("Server hosting the scripts name is ", server, "\n ")
         }
 
         if (ram_t > serverram) {    
@@ -36,8 +36,8 @@ export async function main(ns) {
                 let moneyThresh = ns.getServerMaxMoney(target) * 0.75;
                 let securityThresh = ns.getServerMinSecurityLevel(target) + 1;
 
-                ns.exec("Hacking/HG.js", server, v3t, target, moneyThresh, 'grow');
-                ns.exec("Hacking/HG.js", server, v3t, target, securityThresh, 'weaken');
+                ns.exec("Hacking/HG.js", server, v3t, target, moneyThresh, securityThresh, 'grow');
+                ns.exec("Hacking/HG.js", server, v3t, target, moneyThresh, securityThresh, 'weaken');
             }
         }
     }

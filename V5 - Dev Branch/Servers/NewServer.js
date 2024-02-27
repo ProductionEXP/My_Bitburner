@@ -2,7 +2,7 @@ import { AllServers } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
-const files = ["Grow_V4.js", "Weaken_V4.js"];
+const files = ["Hacking/HG.js"];
 
 // Colors
 	const red = "\u001b[38;5;009m";
