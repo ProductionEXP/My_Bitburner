@@ -1,6 +1,6 @@
 // Imports
-import { CurentHackServers } from "/Function-Library/Functions.js"
-import { Portem } from "/Function-Library/Functions.js"
+import { CurentHackServers } from "/src/Function-Library/Functions.js"
+import { Portem } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {

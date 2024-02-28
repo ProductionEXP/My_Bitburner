@@ -1,4 +1,4 @@
-import { AllServers } from "/Function-Library/Functions.js"
+import { AllServers } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));
@@ -22,11 +22,13 @@ export async function main(ns) {
 			let max= 0;
 	    	for (let i = 20; i >= 1; i--) {
         	    if (ns.getPurchasedServerCost(Math.pow(2, i)) <= ns.getPlayer().money) {
-                    max= Math.pow(2, i);
+                    max = Math.pow(2, i);
+					if (max >> ns.getPurchasedServerMaxRam()) max = Math.pow(2, i-1);
     	            break;
             	}
         	}
-			const temp = await ns.prompt(`Do you want to buy a server named: ${name}, with ${max}Gb of RAM?\nThis will cost ${ns.formatNumber(ns.getPurchasedServerCost(max), 3)}`)
+			
+			const temp = await ns.prompt(`Do you want to buy a server named: ${name}, with ${max}Gb of RAM?\nThis will cost $${ns.formatNumber(ns.getPurchasedServerCost(max), 3)}`)
 			if (temp != true) {return ns.tprint(`${red}Script exited.`)}
 			else if (temp === false) {
 				ns.purchaseServer(name, max);

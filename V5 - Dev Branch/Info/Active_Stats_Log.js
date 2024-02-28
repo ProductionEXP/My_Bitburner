@@ -1,7 +1,7 @@
 // Imports
-import { portinfo } from "/Function-Library/Functions.js"
-import { progressBar } from "/Function-Library/Functions.js"
-import { AllServers } from "/Function-Library/Functions.js"
+import { portinfo } from "/src/Function-Library/Functions.js"
+import { progressBar } from "/src/Function-Library/Functions.js"
+import { AllServers } from "/src/Function-Library/Functions.js"
 
 
 /** @param {NS} ns */
@@ -16,6 +16,7 @@ export async function main(ns) {
     const blue = "\u001b[38;5;012m";
     const redred = "\u001b[38;5;009m";
     const red = "\u001b[38;5;160m";
+    const bladeburnerblue = "\u001b[38;5;027m";
 
     const augmentsowned = ns.singularity.getOwnedAugmentations().slice().length;
     const ownedaugmentations = ns.singularity.getOwnedAugmentations();
@@ -44,48 +45,50 @@ export async function main(ns) {
         ns.print(`${green}${time}`);
         ns.print(`${green}${date} \n `);
 
-        ns.print(`${green}--Server Income Stats--`);
-        ns.print(`${green}Server income ${ns.formatNumber(ns.getTotalScriptIncome()[0])}/s`);
-        ns.print(`${orange}Server EXP income ${ns.formatNumber(ns.getTotalScriptExpGain())}/s \n `);
+        ns.print(`${green}--Server Stats--`);
+        ns.print(`${green}Server income $${ns.formatNumber(ns.getTotalScriptIncome()[0])}/s`);
+        ns.print(`${orange}Server EXP income ${ns.formatNumber(ns.getTotalScriptExpGain())}/s`);
+        ns.print(`${green}Home ram | ${ns.formatRam(ns.getServerUsedRam('home'), 2)} / ${ns.formatRam(ns.getServerMaxRam('home'), 2)}`);
+        ns.print(`${green}${progressBar((ns.getServerUsedRam('home') / ns.getServerMaxRam('home')), 34)}\n `);
         if((ns.getPlayer().hp.max / ns.getPlayer().hp.current) <= 0.1) {hplow = " - !!LOW HP!!"}
         ns.print(`${green}--Player Stats--`);
-        ns.print(`${red}Health\t\t- ${ns.getPlayer().hp.current} / ${ns.getPlayer().hp.max}${redred}${hplow}`);
-        ns.print(`${green}Money\t\t- $${ns.formatNumber(ns.getPlayer().money)}`);
+        ns.print(`${red}Health\t- ${ns.getPlayer().hp.current} / ${ns.getPlayer().hp.max}${redred}${hplow}`);
+        ns.print(`${green}Money\t- $${ns.formatNumber(ns.getPlayer().money)}`);
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.hacking +1, ns.getPlayer().mults.hacking * ns.getBitNodeMultipliers().HackingLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.hacking, ns.getPlayer().mults.hacking * ns.getBitNodeMultipliers().HackingLevelMultiplier);
         persentage = ((ns.getPlayer().exp.hacking - expmin1) / (expplus1 - expmin1));
-        ns.print(`${orange}Hacking\t\t- ${ns.formatNumber(ns.getPlayer().skills.hacking, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${orange}Hacking\t- ${ns.formatNumber(ns.getPlayer().skills.hacking, 0, 100000000)}\t${progressBar(persentage,14)}`);
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.strength +1, ns.getPlayer().mults.strength * ns.getBitNodeMultipliers().StrengthLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.strength, ns.getPlayer().mults.strength * ns.getBitNodeMultipliers().StrengthLevelMultiplier);
         persentage = ((ns.getPlayer().exp.strength - expmin1) / (expplus1 - expmin1));
-        ns.print(`${yellow}Strength\t- ${ns.formatNumber(ns.getPlayer().skills.strength, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${yellow}Strength\t- ${ns.formatNumber(ns.getPlayer().skills.strength, 0, 100000000)}\t${progressBar(persentage,14)}`);
         
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.defense +1, ns.getPlayer().mults.defense * ns.getBitNodeMultipliers().DefenseLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.defense, ns.getPlayer().mults.defense * ns.getBitNodeMultipliers().DefenseLevelMultiplier);
         persentage = ((ns.getPlayer().exp.defense - expmin1) / (expplus1 - expmin1));
-        ns.print(`${yellow}Defense\t\t- ${ns.formatNumber(ns.getPlayer().skills.defense, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${yellow}Defense\t- ${ns.formatNumber(ns.getPlayer().skills.defense, 0, 100000000)}\t${progressBar(persentage,14)}`);
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.dexterity +1, ns.getPlayer().mults.dexterity * ns.getBitNodeMultipliers().DexterityLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.dexterity, ns.getPlayer().mults.dexterity * ns.getBitNodeMultipliers().DexterityLevelMultiplier);
         persentage = ((ns.getPlayer().exp.dexterity - expmin1) / (expplus1 - expmin1));
-        ns.print(`${yellow}Dexterity\t- ${ns.formatNumber(ns.getPlayer().skills.dexterity, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${yellow}Dexterity\t- ${ns.formatNumber(ns.getPlayer().skills.dexterity, 0, 100000000)}\t${progressBar(persentage,14)}`);
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.agility +1, ns.getPlayer().mults.agility * ns.getBitNodeMultipliers().AgilityLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.agility, ns.getPlayer().mults.agility * ns.getBitNodeMultipliers().AgilityLevelMultiplier);
         persentage = ((ns.getPlayer().exp.agility - expmin1) / (expplus1 - expmin1));
-        ns.print(`${yellow}Agility\t\t- ${ns.formatNumber(ns.getPlayer().skills.agility, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${yellow}Agility\t- ${ns.formatNumber(ns.getPlayer().skills.agility, 0, 100000000)}\t${progressBar(persentage,14)}`);
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.charisma +1, ns.getPlayer().mults.charisma * ns.getBitNodeMultipliers().CharismaLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.charisma, ns.getPlayer().mults.charisma * ns.getBitNodeMultipliers().CharismaLevelMultiplier);
         persentage = ((ns.getPlayer().exp.charisma - expmin1) / (expplus1 - expmin1));
-        ns.print(`${purple}Charisma\t- ${ns.formatNumber(ns.getPlayer().skills.charisma, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${purple}Charisma\t- ${ns.formatNumber(ns.getPlayer().skills.charisma, 0, 100000000)}\t${progressBar(persentage,14)}`);
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.intelligence +1, 1);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.intelligence, 1);
         persentage = ((ns.getPlayer().exp.intelligence - expmin1) / (expplus1 - expmin1));
-        ns.print(`${blue}Intelligence\t- ${ns.formatNumber(ns.getPlayer().skills.intelligence, 0, 100000000)}\t${progressBar(persentage,10)}`);
+        ns.print(`${blue}Intelligence- ${ns.formatNumber(ns.getPlayer().skills.intelligence, 0, 100000000)}\t${progressBar(persentage,14)}`);
         ns.print(`${green}Servers\t- ${AllServers(ns, 'home').slice().length} / ${Math.round(ns.getBitNodeMultipliers().PurchasedServerLimit*25)} \n `)
 
         if(ns.singularity.isBusy() && !ns.singularity.isFocused()) {
@@ -115,6 +118,29 @@ export async function main(ns) {
             }
         }
 
+        if(ns.bladeburner.getCurrentAction().type != 'Idle') {
+            ns.print(`${bladeburnerblue}BLADEBURNER`)
+            if (ns.bladeburner.getCurrentAction().type === 'General') {
+                ns.print(`${green}General work for Bladeburner`);
+                ns.print(`${green}You are preforming ${ns.bladeburner.getCurrentAction().name}`);
+            }
+            else if (ns.bladeburner.getCurrentAction().type === 'Contract') {
+                ns.print(`${green}Contracting for Bladeburner`);
+                ns.print(`${green}Active contract: ${ns.bladeburner.getCurrentAction().name}`);
+            }
+            else if (ns.bladeburner.getCurrentAction().type === 'Operation') {
+                ns.print(`${green}Operations for Bladeburner`);
+                ns.print(`${green}Active operation: ${ns.bladeburner.getCurrentAction().name}`);
+            }   
+            else if (ns.bladeburner.getCurrentAction().type === 'BlackOp') {
+                ns.print(`${green}Blackop for Bladeburner`)
+                ns.print(`${green}Active blackop: ${ns.bladeburner.getCurrentAction().name}`);
+            }
+            ns.print(`${green}${ns.bladeburner.getActionCurrentTime()/1000}s of ${ns.bladeburner.getActionTime(ns.bladeburner.getCurrentAction().type, ns.bladeburner.getCurrentAction().name)/1000}s`);
+            ns.print(`${green}${progressBar(ns.bladeburner.getActionCurrentTime() / ns.bladeburner.getActionTime(ns.bladeburner.getCurrentAction().type, ns.bladeburner.getCurrentAction().name), 34)} \n `);
+	        
+        }
+
         if(fl1ghtexe === "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
         if(fl1ghtexe === "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
 
@@ -134,13 +160,13 @@ export async function main(ns) {
             ns.print(` `);
 
             if(ns.getHackingLevel() < 2500) {
-                ns.print(`${green}Hacking Level           ${progressBar((hacklevlpresent),10)} ${ns.formatNumber(hacklevlpresent*100, 0)}%`);
+                ns.print(`${green}Hacking Level\t    ${progressBar((hacklevlpresent),10)} ${ns.formatNumber(hacklevlpresent*100, 0)}%`);
                 hc = 0;
             }
             else {hc = 1}
 
             if(ns.getPlayer().money < 100000000000) {
-                ns.print(`${green}Money                   ${progressBar((moneypresent),10)} ${ns.formatNumber(moneypresent*100, 0)}%`);
+                ns.print(`${green}Money\t\t    ${progressBar((moneypresent),10)} ${ns.formatNumber(moneypresent*100, 0)}%`);
                 mc = 0;
             }
             else {mc = 1}

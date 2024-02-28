@@ -1,4 +1,4 @@
-import { AllServers } from "/Function-Library/Functions.js"
+import { AllServers } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {
