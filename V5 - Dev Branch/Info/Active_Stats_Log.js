@@ -20,7 +20,7 @@ export async function main(ns) {
     const augmentsowned = ns.singularity.getOwnedAugmentations().slice().length;
     const ownedaugmentations = ns.singularity.getOwnedAugmentations();
     const gymclass = "agi" || "dex " || "def" || "str";
-    let t1 = 0; let done = 0; let worlddemonhlv = 0; let worlddemonpnum = 0; let TRP = false; let fl1ghtexe = ""; let w0r1dd43m0n = ""; let wdt1 = 0; let event = ""; let time = ""; let date = ""; let worktype = ""; let activegymclass = ""; let hplow = "";
+    let t1 = 0; let done = 0; let worlddemonhlv = 0; let worlddemonpnum = 0; let TRP = false; let fl1ghtexe = ""; let w0r1dd43m0n = ""; let wdt1 = 0; let event = ""; let time = ""; let date = ""; let worktype = ""; let activegymclass = ""; let hplow = ""; let underlying_level = 0; let modified_level = 0; let xp_to_next_level = 0; let hacklevlpre = 0
 
     if(ownedaugmentations.includes("The Red Pill")) {
         worlddemonhlv = ns.getServerRequiredHackingLevel('w0r1d_d43m0n');
@@ -51,7 +51,21 @@ export async function main(ns) {
         ns.print(`${green}--Player Stats--`)
         ns.print(`${red}Health       - ${ns.getPlayer().hp.current} / ${ns.getPlayer().hp.max}${redred}${hplow}`)
         ns.print(`${green}Money        - $${ns.formatNumber(ns.getPlayer().money)}`);
-        ns.print(`${orange}Hacking      - ${ns.formatNumber(ns.getPlayer().skills.hacking, 3, 100000)}`);
+
+        underlying_level = ns.formulas.skills.calculateSkill(ns.getPlayer().exp.hacking)
+        modified_level = 1 + Math.floor(underlying_level * ns.getPlayer().mults.hacking);
+        hacklevlpre = ((ns.getPlayer().exp.hacking) / (ns.formulas.skills.calculateExp((1 + modified_level) / ns.getPlayer().mults.hacking)))
+        ns.print(hacklevlpre)
+        ns.print(modified_level)
+        ns.print(underlying_level)
+        ns.print((ns.formulas.skills.calculateExp((modified_level) / ns.getPlayer().mults.hacking)))
+        ns.print((ns.getPlayer().exp.hacking))
+        ns.print((ns.formulas.skills.calculateExp((1 + modified_level) / ns.getPlayer().mults.hacking)))
+        ns.print((ns.formulas.skills.calculateExp((modified_level) / ns.getPlayer().mults.hacking)) - (ns.getPlayer().exp.hacking))
+        ns.print(' ')
+        
+        ns.print(`${orange}Hacking      - ${ns.formatNumber(ns.getPlayer().skills.hacking, 3, 100000)} ${progressBar(hacklevlpre,10)}`);
+
         ns.print(`${yellow}Strength     - ${ns.formatNumber(ns.getPlayer().skills.strength, 3, 100000)}`);
         ns.print(`${yellow}Defense      - ${ns.formatNumber(ns.getPlayer().skills.defense, 3, 100000)}`);
         ns.print(`${yellow}Dexterity    - ${ns.formatNumber(ns.getPlayer().skills.dexterity, 3, 100000)}`);
@@ -102,23 +116,23 @@ export async function main(ns) {
             if(augmentsowned > 30) {augmentpresent = 1}
             const fl1ghtpresent = ((hacklevlpresent+moneypresent+augmentpresent)/3);
 
-            ns.print(`${green}${progressBar(fl1ghtpresent, 50)} ${ns.formatNumber(fl1ghtpresent*100,0)}%`);
+            ns.print(`${green}${progressBar(fl1ghtpresent,34)} ${ns.formatNumber(fl1ghtpresent*100,0)}%`);
             ns.print(` `);
 
             if(ns.getHackingLevel() < 2500) {
-                ns.print(`${green}Hacking Level           ${progressBar((hacklevlpresent),26)} ${ns.formatNumber(hacklevlpresent*100, 0)}%`);
+                ns.print(`${green}Hacking Level           ${progressBar((hacklevlpresent),10)} ${ns.formatNumber(hacklevlpresent*100, 0)}%`);
                 hc = 0;
             }
             else {hc = 1}
 
             if(ns.getPlayer().money < 100000000000) {
-                ns.print(`${green}Money                   ${progressBar((moneypresent),26)} ${ns.formatNumber(moneypresent*100, 0)}%`);
+                ns.print(`${green}Money                   ${progressBar((moneypresent),10)} ${ns.formatNumber(moneypresent*100, 0)}%`);
                 mc = 0;
             }
             else {mc = 1}
 
             if(augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement) {
-                ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),26)} ${ns.formatNumber(augmentpresent*100, 0)}%`)
+                ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),10)} ${ns.formatNumber(augmentpresent*100, 0)}%`)
                 ac = 0;
             }
             else {ac = 1}
@@ -146,17 +160,17 @@ export async function main(ns) {
                     if((portinfo(ns, 'number')) > worlddemonpnum) {wdportpersent = 1}
                     const worlddemonpresent = ((wdhacklevlpresent+wdportpersent)/2);
                     
-                    ns.print(`${green}${progressBar(worlddemonpresent, 50)} ${ns.formatNumber(worlddemonpresent*100,0)}%`);
+                    ns.print(`${green}${progressBar(worlddemonpresent, 34)} ${ns.formatNumber(worlddemonpresent*100,0)}%`);
                     ns.print(` `);
 
                     if((ns.getHackingLevel() < worlddemonhlv)) {
-                        ns.print(`${green}Hacking Level           ${progressBar((wdhacklevlpresent),26)} ${ns.formatNumber(wdhacklevlpresent*100, 0)}%`);
+                        ns.print(`${green}Hacking Level           ${progressBar((wdhacklevlpresent),10)} ${ns.formatNumber(wdhacklevlpresent*100, 0)}%`);
                         wdhlc = 0;
                     }
                     else {wdhlc = 1}
 
                     if(((portinfo(ns, 'number')) < worlddemonpnum)) {
-                        ns.print(`${green}Ports                   ${progressBar((wdportpersent),26)} ${ns.formatNumber(wdportpersent*100, 0)}%`);
+                        ns.print(`${green}Ports                   ${progressBar((wdportpersent),10)} ${ns.formatNumber(wdportpersent*100, 0)}%`);
                         wdpnc = 0;
                     }
                     else {wdpnc = 1}

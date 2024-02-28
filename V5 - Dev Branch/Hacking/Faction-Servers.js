@@ -48,21 +48,18 @@ export async function main(ns) {
                             ns.print(`${red} Need more ports (.exe) to nuke ${target}`);
                             await ns.sleep(500);
                             ns.clearLog();
-                            break;
                         }
                     }
                     else {
                         ns.print(`${red} Not engough RAM to run Scripts for Ports and scaning`);
                         await ns.sleep(500);
                         ns.clearLog();
-                        break;
                     }
                 }
                 else {
                     ns.print(`${red} Hacking Level to low to Nuke ${target} (${ns.getHackingLevel()} need ${ns.getServerRequiredHackingLevel(target)})`);
                     await ns.sleep(500);
                     ns.clearLog();
-                    break;
                 }
             }
             if((!ownedaugmentations.includes("The Red Pill")) && (target === "w0r1d_d43m0n")) {
