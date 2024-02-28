@@ -22,7 +22,7 @@ export async function main(ns) {
     ns.setTitle(`Stock Manager for ${targetstock}`);
     if(!ns.stock.hasWSEAccount() || !ns.stock.hasTIXAPIAccess()) {
         if(!ns.stock.hasWSEAccount()) {
-            yorn = await ns.prompt('Do you want to buy a WSE account for $?');
+            yorn = await ns.prompt('Do you want to buy a WSE account?');
             if(yorn === true) {ns.stock.purchaseWseAccount()}
             else {
                 ns.print(`${green}This scirpt requires a WSE account`);
@@ -30,7 +30,7 @@ export async function main(ns) {
             }
         }
         if(!ns.stock.hasTIXAPIAccess()) {
-            yorn = await ns.prompt('Do you want to buy TIX API access for $?')
+            yorn = await ns.prompt('Do you want to buy TIX API access?')
             if(yorn === true) {ns.stock.purchaseTixApi()}
             else {
                 ns.print(`${green}This scirpt requires TIX API access`);
@@ -59,7 +59,7 @@ export async function main(ns) {
 
     stockBnS(ns, targetstock, shares, position, "buy");
     buysharevalue = ns.stock.getPrice(targetstock)
-    profit = -ns.stock.getPurchaseCost(targetstock, shares, position);
+    profit = profit - ns.stock.getPurchaseCost(targetstock, shares, position);
     money = money + profit;
 
     while(money < goalmoney) {
