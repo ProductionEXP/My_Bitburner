@@ -1,4 +1,4 @@
-import { AllServers } from "/src/Function-Library/Functions.js"
+import { AllServers } from "/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 const valid_ram = [...Array(20).keys()].map(i => 2 ** (i + 1));

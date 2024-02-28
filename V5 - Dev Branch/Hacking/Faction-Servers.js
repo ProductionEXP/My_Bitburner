@@ -1,7 +1,7 @@
 // Imports
-import { portinfo } from "/src/Function-Library/Functions.js"
-import { Portem } from "/src/Function-Library/Functions.js"
-import { traverse } from "/src/Function-Library/Functions.js"
+import { portinfo } from "/Function-Library/Functions.js"
+import { Portem } from "/Function-Library/Functions.js"
+import { traverse } from "/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {

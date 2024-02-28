@@ -1,5 +1,5 @@
 // Imports
-import { stockBnS } from "/src/Function-Library/Functions.js"
+import { stockBnS } from "/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {

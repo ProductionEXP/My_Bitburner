@@ -1,6 +1,6 @@
 // Imports
-import { CurentHackServers } from "/src/Function-Library/Functions.js"
-import { Portem } from "/src/Function-Library/Functions.js"
+import { CurentHackServers } from "/Function-Library/Functions.js"
+import { Portem } from "/Function-Library/Functions.js"
 
 /** @param {NS} ns */
 export async function main(ns) {
@@ -10,8 +10,8 @@ export async function main(ns) {
     for(const server of server1) {
         const targets = CurentHackServers(ns);   
         const targeta = targets.length;
-        const scripts = ["Hacking/Grow_V4.js","Hacking/Weaken_V4.js"];   
-        const ram_f = ns.getScriptRam("/Hacking/Grow_V4.js") + ns.getScriptRam("/Hacking/Weaken_V4.js"); 
+        const scripts = ["Hacking/HG.js"];   
+        const ram_f = ns.getScriptRam("/Hacking/HG.js")*2; 
         const ram_t = ram_f*targeta;
         const serverram = ns.getServerMaxRam(server) - ns.getServerUsedRam(server);
         const v3t = Math.floor(serverram/ram_t);  
