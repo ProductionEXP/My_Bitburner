@@ -5,7 +5,7 @@ export async function main(ns) {
     const securityThresh = ns.args[2];
     const type = ns.args[3];
     while (true) {
-        if (type === 'grow') {
+        if (type == 'grow') {
             if (ns.getServerMoneyAvailable(target) < moneyThresh) {
                 await ns.grow(target);
             }
@@ -17,7 +17,7 @@ export async function main(ns) {
             }
         }
 
-        if (type === 'weaken') {
+        if (type == 'weaken') {
             if (ns.getServerSecurityLevel(target) > securityThresh) {
                 await ns.weaken(target);
             }

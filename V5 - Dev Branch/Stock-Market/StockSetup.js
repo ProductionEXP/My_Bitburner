@@ -23,7 +23,7 @@ export async function main(ns) {
     if(!ns.stock.hasWSEAccount() || !ns.stock.hasTIXAPIAccess()) {
         if(!ns.stock.hasWSEAccount()) {
             yorn = await ns.prompt('Do you want to buy a WSE account?');
-            if(yorn === true) {ns.stock.purchaseWseAccount()}
+            if(yorn == true) {ns.stock.purchaseWseAccount()}
             else {
                 ns.print(`${green}This scirpt requires a WSE account`);
                 ns.exit()
@@ -31,7 +31,7 @@ export async function main(ns) {
         }
         if(!ns.stock.hasTIXAPIAccess()) {
             yorn = await ns.prompt('Do you want to buy TIX API access?')
-            if(yorn === true) {ns.stock.purchaseTixApi()}
+            if(yorn == true) {ns.stock.purchaseTixApi()}
             else {
                 ns.print(`${green}This scirpt requires TIX API access`);
                 ns.exit()
@@ -72,7 +72,7 @@ export async function main(ns) {
         ns.print(`${red}Bought ${shares} shares at $${ns.formatNumber(buysharevalue)}. Current Share value is $${ns.formatNumber(ns.stock.getPrice(targetstock))} (Profit - ${ns.formatNumber(((ns.stock.getPrice(targetstock)/buysharevalue)*100)-100)}% or $${ns.formatNumber((ns.stock.getPrice(targetstock)*shares)-(buysharevalue*shares))})`)
         if(money <= '0') {
             yorn = await ns.prompt('Stock Manager for ' + targetstock + '\n This script is out of money \n Would you like to keep the script running?');
-            if(yorn === false) {ns.exit()}
+            if(yorn == false) {ns.exit()}
         }
         if(ns.stock.getPrice(targetstock) != sharevalue) {
             lastsharevalue = sharevalue;
@@ -88,7 +88,7 @@ export async function main(ns) {
         shortshares = ns.stock.getPosition(targetstock).slice('2', '-1');
 		longshares = ns.stock.getPosition(targetstock).slice('0', '-3');
 
-        if(shortshares === 0 && longshares === 0) {
+        if(shortshares == 0 && longshares == 0) {
             
         }
         await ns.sleep('50')

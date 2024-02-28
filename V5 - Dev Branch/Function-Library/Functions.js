@@ -5,8 +5,8 @@ export function portinfo(ns, runtype) {
     for(const port of ports) {
         if(ns.fileExists(port, "home")) {aports.push(port)}
     }
-    if(runtype === 'number') {return aports.length}
-    if(runtype === 'what') {return aports}
+    if(runtype == 'number') {return aports.length}
+    if(runtype == 'what') {return aports}
 }
 
 export function CurentHackServers(ns) {
@@ -24,7 +24,7 @@ export function AllServers(ns, alho) {
     const allservers = ["home"];
     const allhomeservers = ["n00dles", "foodnstuff", "sigma-cosmetics", "joesguns", "hong-fang-tea", "harakiri-sushi", "iron-gym", "darkweb"];
     const homeservers = [];
-    if(alho === "all") {
+    if(alho == "all") {
         for (const server of allservers) {
             for (const servers of ns.scan(server)) {
                 if(!allservers.includes(servers)) {allservers.push(servers)}
@@ -32,7 +32,7 @@ export function AllServers(ns, alho) {
         }
         return allservers
     }
-    if(alho === "home") {
+    if(alho == "home") {
         for (const servers of ns.scan('home')) {
             if(!allhomeservers.includes(servers)) {homeservers.push(servers)}
         }
@@ -80,7 +80,7 @@ export function traverse(ns, origin, target, cur_path=[]) {
     
     let nodes = ns.scan(origin);
     
-    if (nodes.length === 0){
+    if (nodes.length == 0){
         ns.print("failing because there is no possible path.");
         return -1;
     }
@@ -102,9 +102,9 @@ export function traverse(ns, origin, target, cur_path=[]) {
 
 // Stock functions from now on
 export function stockBnS(ns, company, shares, LorS, BorS) {
-    if(LorS === "short" && BorS === "buy") {ns.stock.buyShort(company, shares); return("Shorted " + shares + "shares of " + company)}
-    if(LorS === "long" && BorS === "buy") {ns.stock.buyStock(company, shares); return("Bought " + shares + "shares of " + company)}
-    if(LorS === "short" && BorS === "sell") {ns.stock.sellShort(company, shares); return("Short sold " + shares + "shares of " + company)}
-    if(LorS === "long" && BorS === "sell") {ns.stock.sellStock(company, shares); return("Sold " + shares + "shares of " + company)}
+    if(LorS == "short" && BorS == "buy") {ns.stock.buyShort(company, shares); return("Shorted " + shares + "shares of " + company)}
+    if(LorS == "long" && BorS == "buy") {ns.stock.buyStock(company, shares); return("Bought " + shares + "shares of " + company)}
+    if(LorS == "short" && BorS == "sell") {ns.stock.sellShort(company, shares); return("Short sold " + shares + "shares of " + company)}
+    if(LorS == "long" && BorS == "sell") {ns.stock.sellStock(company, shares); return("Sold " + shares + "shares of " + company)}
     return("Failed")
 }

@@ -30,7 +30,7 @@ export async function main(ns) {
     }
 
     while(true){
-        ns.setTitle(`Overview`);
+        ns.setTitle(`--Overview--`);
         event = new Date();
         time = event.toLocaleString('en-GB', { timeZone: 'MST', timeStyle: 'medium', hour12: true});
         date = event.toLocaleString('en-GB', { timeZone: 'MST', dateStyle: 'long'});
@@ -48,7 +48,7 @@ export async function main(ns) {
         ns.print(`${green}--Server Stats--`);
         ns.print(`${green}Server income $${ns.formatNumber(ns.getTotalScriptIncome()[0])}/s`);
         ns.print(`${orange}Server EXP income ${ns.formatNumber(ns.getTotalScriptExpGain())}/s`);
-        ns.print(`${green}Home ram | ${ns.formatRam(ns.getServerUsedRam('home'), 2)} / ${ns.formatRam(ns.getServerMaxRam('home'), 2)}`);
+        ns.print(`${green}Home ram | ${ns.formatRam(ns.getServerUsedRam('home'), 2)} / ${ns.formatRam(ns.getServerMaxRam('home'), 2)} (${ns.formatRam(ns.getServerMaxRam('home')-ns.getServerUsedRam('home'), 2)} free)`);
         ns.print(`${green}${progressBar((ns.getServerUsedRam('home') / ns.getServerMaxRam('home')), 34)}\n `);
         if((ns.getPlayer().hp.max / ns.getPlayer().hp.current) <= 0.1) {hplow = " - !!LOW HP!!"}
         ns.print(`${green}--Player Stats--`);
@@ -94,25 +94,25 @@ export async function main(ns) {
         if(ns.singularity.isBusy() && !ns.singularity.isFocused()) {
             worktype = ns.singularity.getCurrentWork().type;
             ns.print(`${green}${worktype}`);
-            if(worktype === "CRIME") {ns.print(`${green}You are attempting to ${ns.singularity.getCurrentWork().crimeType} \n `)}
-            if(worktype === "FACTION") {
+            if(worktype == "CRIME") {ns.print(`${green}You are attempting to ${ns.singularity.getCurrentWork().crimeType}`);}
+            if(worktype == "FACTION") {
                 ns.print(`${green}Working for ${ns.singularity.getCurrentWork().factionName} - ${ns.singularity.getCurrentWork().factionWorkType}`);
                 ns.print(`${green}${ns.formatNumber(ns.singularity.getFactionRep(ns.singularity.getCurrentWork().factionName))} rep \n `);
             }
-            if(worktype === "CREATE_PROGRAM") {ns.print(`${green}Creating program ${ns.singularity.getCurrentWork().programName} \n `)}
-            if(worktype === "COMPANY") {
+            if(worktype == "CREATE_PROGRAM") {ns.print(`${green}Creating program ${ns.singularity.getCurrentWork().programName} \n `)}
+            if(worktype == "COMPANY") {
                 ns.print(`${green}Working for ${ns.singularity.getCurrentWork().companyName}`);
                 ns.print(`${green}${ns.formatNumber(ns.singularity.getCompanyRep(ns.singularity.getCurrentWork().companyName))} rep \n `);
             }
-            if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {
+            if(worktype == "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {
                 ns.print(`${green}You are taking a ${ns.singularity.getCurrentWork().classType} course at ${ns.singularity.getCurrentWork().location}`);
                 ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
             }
-            if(worktype === "CLASS" && ns.singularity.getCurrentWork().classType === gymclass) {
-                if(ns.singularity.getCurrentWork().classType === "str") {activegymclass = "strength"}
-                if(ns.singularity.getCurrentWork().classType === "dex") {activegymclass = "dexterity"}
-                if(ns.singularity.getCurrentWork().classType === "def") {activegymclass = "defense"}
-                if(ns.singularity.getCurrentWork().classType === "agi") {activegymclass = "agility"}
+            if(worktype == "CLASS" && ns.singularity.getCurrentWork().classType == gymclass) {
+                if(ns.singularity.getCurrentWork().classType == "str") {activegymclass = "strength"}
+                if(ns.singularity.getCurrentWork().classType == "dex") {activegymclass = "dexterity"}
+                if(ns.singularity.getCurrentWork().classType == "def") {activegymclass = "defense"}
+                if(ns.singularity.getCurrentWork().classType == "agi") {activegymclass = "agility"}
                 ns.print(`${green}You are training your ${activegymclass} at ${ns.singularity.getCurrentWork().location}`);
                 ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
             }
@@ -120,19 +120,19 @@ export async function main(ns) {
 
         if(ns.bladeburner.getCurrentAction().type != 'Idle') {
             ns.print(`${bladeburnerblue}BLADEBURNER`)
-            if (ns.bladeburner.getCurrentAction().type === 'General') {
+            if (ns.bladeburner.getCurrentAction().type == 'General') {
                 ns.print(`${green}General work for Bladeburner`);
                 ns.print(`${green}You are preforming ${ns.bladeburner.getCurrentAction().name}`);
             }
-            else if (ns.bladeburner.getCurrentAction().type === 'Contract') {
+            else if (ns.bladeburner.getCurrentAction().type == 'Contract') {
                 ns.print(`${green}Contracting for Bladeburner`);
                 ns.print(`${green}Active contract: ${ns.bladeburner.getCurrentAction().name}`);
             }
-            else if (ns.bladeburner.getCurrentAction().type === 'Operation') {
+            else if (ns.bladeburner.getCurrentAction().type == 'Operation') {
                 ns.print(`${green}Operations for Bladeburner`);
                 ns.print(`${green}Active operation: ${ns.bladeburner.getCurrentAction().name}`);
             }   
-            else if (ns.bladeburner.getCurrentAction().type === 'BlackOp') {
+            else if (ns.bladeburner.getCurrentAction().type == 'BlackOp') {
                 ns.print(`${green}Blackop for Bladeburner`)
                 ns.print(`${green}Active blackop: ${ns.bladeburner.getCurrentAction().name}`);
             }
@@ -141,8 +141,8 @@ export async function main(ns) {
 	        
         }
 
-        if(fl1ghtexe === "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
-        if(fl1ghtexe === "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
+        if(fl1ghtexe == "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
+        if(fl1ghtexe == "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
 
         if(((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) && !ns.getPlayer().factions.includes("Daedalus")) {
             ns.print(`${green}~~Fl1ght.exe Progress~~`);
@@ -177,16 +177,16 @@ export async function main(ns) {
             }
             else {ac = 1}
 
-            if((ac+mc+hc) === 3) {done = 1}
+            if((ac+mc+hc) == 3) {done = 1}
 
-            if(((ns.getHackingLevel() > 2500) && (ns.getPlayer().money > 100000000000) && (augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement) && (t1 <= 60)) || done === 1) {
+            if(((ns.getHackingLevel() > 2500) && (ns.getPlayer().money > 100000000000) && (augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement) && (t1 <= 60)) || done == 1) {
                 ns.print('Fl1ght.exe Compleated')
                 t1 = t1+1;
             }
         }
         else {t1 = 61}
   
-        if(t1>= 60 && done === 1) {ns.print(`${green}Fl1ght.exe Done`)}
+        if(t1>= 60 && done == 1) {ns.print(`${green}Fl1ght.exe Done`)}
 
         if(((ns.getHackingLevel() > 2500 && ns.getPlayer().money > 100000000000 && augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement && TRP) && ((ns.getHackingLevel() < worlddemonhlv)) || ((portinfo(ns, 'number')) < worlddemonpnum)) || TRP) {
             if (wdt1 <= 60) {
@@ -215,9 +215,9 @@ export async function main(ns) {
                     }
                     else {wdpnc = 1}
 
-                    if((wdhlc+wdpnc) === 3) {wddone = 1}
+                    if((wdhlc+wdpnc) == 3) {wddone = 1}
 
-                    if(worlddemonpresent === 1) {
+                    if(worlddemonpresent == 1) {
                         ns.print('Can hack w0r1d_d43m0n - Can leave this bitnode');
                         wdt1 = wdt1+1;
                     }
