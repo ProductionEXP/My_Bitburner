@@ -2,7 +2,7 @@
 import { stockBnS } from "/src/Function-Library/Functions.js"
 
 /** @param {NS} ns */
-export async function main(ns) {
+export async function main(ns) { 
     const green = "\u001b[38;5;046m";
     const orange = "\u001b[38;5;208m";
     const yellow = "\u001b[38;5;226m";
@@ -45,12 +45,11 @@ export async function main(ns) {
     const position = ns.args[4];
 
     if(shares > ns.stock.getMaxShares(targetstock)) {return(ns.print('You ordered to many shares \n Company only has ' + ns.formatNumber(ns.stock.getMaxShares(targetstock))))}
-    if(ns.stock.getPurchaseCost(targetstock, shares, position) + '100000' > startingmoney) {return(ns.print('Not enough starting money to start script \n You gave $' + ns.formatNumber(startingmoney) + ' for ' + ns.formatNumber(shares) + ' shares. \n But to buy that many shares you need $' + ns.formatNumber(ns.stock.getPurchaseCost(targetstock, shares, position))))}
+    if(ns.stock.getPurchaseCost(targetstock, shares, position) + 100000 > startingmoney) {return(ns.print('Not enough starting money to start script \n You gave $' + ns.formatNumber(startingmoney) + ' for ' + ns.formatNumber(shares) + ' shares. \n But to buy that many shares you need $' + ns.formatNumber(ns.stock.getPurchaseCost(targetstock, shares, position))))}
 
     let money = startingmoney;
     let profit = '0';
     let sharevalue = ns.stock.getPrice(targetstock);
-    let lastsharevalue = ns.stock.getPrice(targetstock);
     let profitcolour = red;
     let moneycolour = green;
     let buysharevalue = '0';
@@ -59,7 +58,7 @@ export async function main(ns) {
 
     stockBnS(ns, targetstock, shares, position, "buy");
     buysharevalue = ns.stock.getPrice(targetstock)
-    profit = profit - ns.stock.getPurchaseCost(targetstock, shares, position);
+    profit = profit - ns.stock.getPurchaseCost(targetstock, shares, position) - 100000;
     money = money + profit;
 
     while(money < goalmoney) {
@@ -69,18 +68,18 @@ export async function main(ns) {
         ns.print(`${profitcolour}Profit is ${ns.formatNumber(profit)}`);
         ns.print(`${moneycolour}Money is ${ns.formatNumber(money)}`);
         ns.print(`${green}Goal $${ns.formatNumber(goalmoney)}`);
-        ns.print(`${red}Bought ${shares} shares at $${ns.formatNumber(buysharevalue)}. Current Share value is $${ns.formatNumber(ns.stock.getPrice(targetstock))} (Profit - ${ns.formatNumber(((ns.stock.getPrice(targetstock)/buysharevalue)*100)-100)}% or $${ns.formatNumber((ns.stock.getPrice(targetstock)*shares)-(buysharevalue*shares))})`)
+        ns.print(`${red}Bought ${shares} shares at $${ns.formatNumber(buysharevalue)}. Current Share value is $${ns.formatNumber(ns.stock.getPrice(targetstock))} (Profit - ${ns.formatNumber(((ns.stock.getPrice(targetstock)*shares/((buysharevalue*shares)-200000))*100)-100)}% or $${ns.formatNumber((ns.stock.getPrice(targetstock)*shares)-(buysharevalue*shares)-200000)})`)
         if(money <= '0') {
             yorn = await ns.prompt('Stock Manager for ' + targetstock + '\n This script is out of money \n Would you like to keep the script running?');
             if(yorn == false) {ns.exit()}
         }
         if(ns.stock.getPrice(targetstock) != sharevalue) {
-            lastsharevalue = sharevalue;
             sharevalue = ns.stock.getPrice(targetstock);
-            if(((sharevalue - lastsharevalue)*shares) > '100000') {
+            if((sharevalue / buysharevalue) > 1.25 && (buysharevalue - sharevalue)*shares >> 100000) {
                 if(ns.stock.getSaleGain(targetstock, shares, position) > (money*0.1)) {
                     ns.tprint(`${green}Stock mannager for ${targetstock}\n Sold ${shares} shares at ${sharevalue} for a profit of ${ns.stock.getSaleGain(targetstock, shares, position)}`);
                     stockBnS(ns, targetstock, shares, position, "sell")
+                    profit = (ns.stock.getPrice(targetstock)*shares) - 100000 - (buysharevalue*shares)
                 }
             }
         }
@@ -88,7 +87,7 @@ export async function main(ns) {
         shortshares = ns.stock.getPosition(targetstock).slice('2', '-1');
 		longshares = ns.stock.getPosition(targetstock).slice('0', '-3');
 
-        if(shortshares == 0 && longshares == 0) {
+        if(shortshares == 0 && longshares == 0) {   
             
         }
         await ns.sleep('50')

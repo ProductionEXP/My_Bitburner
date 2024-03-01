@@ -32,7 +32,6 @@ export async function main(ns) {
     while(true){
         ns.setTitle(`--Overview--`);
         event = new Date();
-        time = event.toLocaleString('en-GB', { timeZone: 'MST', timeStyle: 'medium', hour12: true});
         date = event.toLocaleString('en-GB', { timeZone: 'MST', dateStyle: 'long'});
 
         if(t1>=60) {fl1ghtexe = "Done"} else {fl1ghtexe = "In progress"}
