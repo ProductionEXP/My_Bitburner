@@ -142,14 +142,14 @@ export async function main(ns) {
         }
 
         if(fl1ghtexe == "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
-        if(fl1ghtexe == "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
+        if(fl1ghtexe == "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n}`)} else {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
 
         if(((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) && !ns.getPlayer().factions.includes("Daedalus")) {
             ns.print(`${green}~~Fl1ght.exe Progress~~`);
 
-            let hacklevlpresent = (ns.getHackingLevel()/2500);
-            let moneypresent = (ns.getPlayer().money/100000000000);
-            let augmentpresent = (augmentsowned/ns.getBitNodeMultipliers().DaedalusAugsRequirement);
+            let hacklevlpresent = Math.floor(ns.getHackingLevel()/2500);
+            let moneypresent = Math.floor(ns.getPlayer().money/100000000000);
+            let augmentpresent = Math.floor(augmentsowned/ns.getBitNodeMultipliers().DaedalusAugsRequirement);
             let mc = 0; let hc =0; let ac = 0; let done = 0;
             if(ns.getHackingLevel() > 2500) {hacklevlpresent = 1}
             if(ns.getPlayer().money > 100000000000) {moneypresent = 1}
@@ -198,7 +198,7 @@ export async function main(ns) {
                     let wdhlc = 0; let wdpnc =0; let wddone = 0;
                     if(ns.getHackingLevel() > worlddemonhlv) {wdhacklevlpresent = 1}
                     if((portinfo(ns, 'number')) > worlddemonpnum) {wdportpersent = 1}
-                    const worlddemonpresent = ((wdhacklevlpresent+wdportpersent)/2);
+                    let worlddemonpresent = ((wdhacklevlpresent+wdportpersent)/2);
                     
                     ns.print(`${green}${progressBar(worlddemonpresent, 34)} ${ns.formatNumber(worlddemonpresent*100,0)}%`);
                     ns.print(` `);
