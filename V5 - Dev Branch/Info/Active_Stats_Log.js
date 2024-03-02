@@ -21,7 +21,7 @@ export async function main(ns) {
     const augmentsowned = ns.singularity.getOwnedAugmentations().slice().length;
     const ownedaugmentations = ns.singularity.getOwnedAugmentations();
     const gymclass = "agi" || "dex " || "def" || "str";
-    let t1 = 0; let done = 0; let worlddemonhlv = 0; let worlddemonpnum = 0; let TRP = false; let fl1ghtexe = ""; let w0r1dd43m0n = ""; let wdt1 = 0; let event = ""; let time = ""; let date = ""; let worktype = ""; let activegymclass = ""; let hplow = ""; let expplus1 = 0; let expmin1 = 0; let persentage = 0
+    let t1 = 0; let done = 0; let worlddemonhlv = 500; let worlddemonpnum = 5; let TRP = false; let fl1ghtexe = ""; let w0r1dd43m0n = ""; let wdt1 = 0; let event = ""; let time = ""; let date = ""; let worktype = ""; let activegymclass = ""; let hplow = ""; let expplus1 = 0; let expmin1 = 0; let persentage = 0
 
     if(ownedaugmentations.includes("The Red Pill")) {
         worlddemonhlv = ns.getServerRequiredHackingLevel('w0r1d_d43m0n');
@@ -92,29 +92,35 @@ export async function main(ns) {
         ns.print(`${green}Servers\t- ${AllServers(ns, 'home').slice().length} / ${Math.round(ns.getBitNodeMultipliers().PurchasedServerLimit*25)} \n `)
 
         if(ns.singularity.isBusy() && !ns.singularity.isFocused()) {
-            worktype = ns.singularity.getCurrentWork().type;
-            ns.print(`${green}${worktype}`);
-            if(worktype == "CRIME") {ns.print(`${green}You are attempting to ${ns.singularity.getCurrentWork().crimeType}`);}
-            if(worktype == "FACTION") {
-                ns.print(`${green}Working for ${ns.singularity.getCurrentWork().factionName} - ${ns.singularity.getCurrentWork().factionWorkType}`);
-                ns.print(`${green}${ns.formatNumber(ns.singularity.getFactionRep(ns.singularity.getCurrentWork().factionName))} rep \n `);
+            if (ns.singularity.getCurrentWork() != null) {
+                worktype = ns.singularity.getCurrentWork().type;
+                ns.print(`${green}${worktype}`);
+                if(worktype == "CRIME") {ns.print(`${green}You are attempting to ${ns.singularity.getCurrentWork().crimeType} \n `);}
+                if(worktype == "FACTION") {
+                    ns.print(`${green}Working for ${ns.singularity.getCurrentWork().factionName} - ${ns.singularity.getCurrentWork().factionWorkType}`);
+                    ns.print(`${green}${ns.formatNumber(ns.singularity.getFactionRep(ns.singularity.getCurrentWork().factionName))} rep \n `);
+                }
+                if(worktype == "CREATE_PROGRAM") {ns.print(`${green}Creating program ${ns.singularity.getCurrentWork().programName} \n `)}
+                if(worktype == "COMPANY") {
+                    ns.print(`${green}Working for ${ns.singularity.getCurrentWork().companyName}`);
+                    ns.print(`${green}${ns.formatNumber(ns.singularity.getCompanyRep(ns.singularity.getCurrentWork().companyName))} rep \n `);
+                }
+                if(worktype == "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {
+                    ns.print(`${green}You are taking a ${ns.singularity.getCurrentWork().classType} course at ${ns.singularity.getCurrentWork().location}`);
+                    ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
+                }
+                if(worktype == "CLASS" && ns.singularity.getCurrentWork().classType == gymclass) {
+                    if(ns.singularity.getCurrentWork().classType == "str") {activegymclass = "strength"}
+                    if(ns.singularity.getCurrentWork().classType == "dex") {activegymclass = "dexterity"}
+                    if(ns.singularity.getCurrentWork().classType == "def") {activegymclass = "defense"}
+                    if(ns.singularity.getCurrentWork().classType == "agi") {activegymclass = "agility"}
+                    ns.print(`${green}You are training your ${activegymclass} at ${ns.singularity.getCurrentWork().location}`);
+                    ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
+                }
             }
-            if(worktype == "CREATE_PROGRAM") {ns.print(`${green}Creating program ${ns.singularity.getCurrentWork().programName} \n `)}
-            if(worktype == "COMPANY") {
-                ns.print(`${green}Working for ${ns.singularity.getCurrentWork().companyName}`);
-                ns.print(`${green}${ns.formatNumber(ns.singularity.getCompanyRep(ns.singularity.getCurrentWork().companyName))} rep \n `);
-            }
-            if(worktype == "CLASS" && ns.singularity.getCurrentWork().classType !== gymclass) {
-                ns.print(`${green}You are taking a ${ns.singularity.getCurrentWork().classType} course at ${ns.singularity.getCurrentWork().location}`);
-                ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
-            }
-            if(worktype == "CLASS" && ns.singularity.getCurrentWork().classType == gymclass) {
-                if(ns.singularity.getCurrentWork().classType == "str") {activegymclass = "strength"}
-                if(ns.singularity.getCurrentWork().classType == "dex") {activegymclass = "dexterity"}
-                if(ns.singularity.getCurrentWork().classType == "def") {activegymclass = "defense"}
-                if(ns.singularity.getCurrentWork().classType == "agi") {activegymclass = "agility"}
-                ns.print(`${green}You are training your ${activegymclass} at ${ns.singularity.getCurrentWork().location}`);
-                ns.print(`${green}${ns.tFormat(((ns.singularity.getCurrentWork().cyclesWorked)/5)*1000)} \n `);
+            else {
+                ns.print(`${green}You are working on something....`);
+                ns.print(`${green}We are not sure what though \n `);
             }
         }
 
@@ -141,15 +147,15 @@ export async function main(ns) {
 	        
         }
 
-        if(fl1ghtexe == "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
-        if(fl1ghtexe == "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n}`)} else {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
+        if(fl1ghtexe == "Done" || w0r1dd43m0n != "Done") {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe}`)} else {ns.print(`${green}Fl1ght.exe   - ${fl1ghtexe} \n `)}
+        if(w0r1dd43m0n == "Done") {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n}`)} else {ns.print(`${green}w0r1d_d43m0n - ${w0r1dd43m0n} \n `)}
 
         if(((ns.getHackingLevel() < 2500 || ns.getPlayer().money < 100000000000 || augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement || t1 <= 60) && !TRP) && !ns.getPlayer().factions.includes("Daedalus")) {
             ns.print(`${green}~~Fl1ght.exe Progress~~`);
 
-            let hacklevlpresent = Math.floor(ns.getHackingLevel()/2500);
-            let moneypresent = Math.floor(ns.getPlayer().money/100000000000);
-            let augmentpresent = Math.floor(augmentsowned/ns.getBitNodeMultipliers().DaedalusAugsRequirement);
+            let hacklevlpresent = (ns.getHackingLevel()/2500);
+            let moneypresent = (ns.getPlayer().money/100000000000);
+            let augmentpresent = (augmentsowned/ns.getBitNodeMultipliers().DaedalusAugsRequirement);
             let mc = 0; let hc =0; let ac = 0; let done = 0;
             if(ns.getHackingLevel() > 2500) {hacklevlpresent = 1}
             if(ns.getPlayer().money > 100000000000) {moneypresent = 1}
@@ -160,22 +166,31 @@ export async function main(ns) {
             ns.print(` `);
 
             if(ns.getHackingLevel() < 2500) {
-                ns.print(`${green}Hacking Level\t    ${progressBar((hacklevlpresent),10)} ${ns.formatNumber(hacklevlpresent*100, 0)}%`);
+                ns.print(`${green}Hacking Level\t    ${progressBar((hacklevlpresent),10)} ${ns.formatNumber(Math.floor(hacklevlpresent*100), 0)}%`);
                 hc = 0;
             }
-            else {hc = 1}
+            else {
+                hc = 1;
+                ns.print(`${green}Hacking Level\t    ${progressBar((hacklevlpresent),10)} Done`);
+            }
 
             if(ns.getPlayer().money < 100000000000) {
-                ns.print(`${green}Money\t\t    ${progressBar((moneypresent),10)} ${ns.formatNumber(moneypresent*100, 0)}%`);
+                ns.print(`${green}Money\t\t    ${progressBar((moneypresent),10)} ${ns.formatNumber(Math.floor(moneypresent*100), 0)}%`);
                 mc = 0;
             }
-            else {mc = 1}
+            else {
+                mc = 1;
+                ns.print(`${green}Money\t\tDone ${progressBar((moneypresent),10)} Done`);
+            }
 
             if(augmentsowned < ns.getBitNodeMultipliers().DaedalusAugsRequirement) {
-                ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),10)} ${ns.formatNumber(augmentpresent*100, 0)}%`)
+                ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),10)} ${ns.formatNumber(Math.floor(augmentpresent*100), 0)}%`);
                 ac = 0;
             }
-            else {ac = 1}
+            else {
+                ac = 1;
+                ns.print(`${green}Installed augmentations ${progressBar((augmentpresent),10)} Done`);
+            }
 
             if((ac+mc+hc) == 3) {done = 1}
 
@@ -188,7 +203,7 @@ export async function main(ns) {
   
         if(t1>= 60 && done == 1) {ns.print(`${green}Fl1ght.exe Done`)}
 
-        if(((ns.getHackingLevel() > 2500 && ns.getPlayer().money > 100000000000 && augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement && TRP) && ((ns.getHackingLevel() < worlddemonhlv)) || ((portinfo(ns, 'number')) < worlddemonpnum)) || TRP) {
+        if(((ns.getHackingLevel() > 2500 && ns.getPlayer().money > 100000000000 && augmentsowned > ns.getBitNodeMultipliers().DaedalusAugsRequirement) && ((ns.getHackingLevel() <= worlddemonhlv)) || ((portinfo(ns, 'number')) <= worlddemonpnum)) || TRP) {
             if (wdt1 <= 60) {
                 if(ownedaugmentations.includes("The Red Pill")) {
                     ns.print(`${green}~~w0r1d_d43m0n Progress~~`);
@@ -222,9 +237,13 @@ export async function main(ns) {
                         wdt1 = wdt1+1;
                     }
                 }
+                else {
+                    ns.print(`${green}Need 'The Red Pill' augmentation from the`); 
+                    ns.print(`${green}Daedalus faction to hack w0r1d_d43m0n`);
+                }
             }
         }
-        else {wdt1 = 61}
+        else {wdt1 = 61}        
 
         await ns.sleep(100);
     }
