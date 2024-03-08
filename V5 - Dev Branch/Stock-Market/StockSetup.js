@@ -19,8 +19,8 @@ export async function main(ns) {
         ns.print(`${green}Valid tickers are: ${ns.stock.getSymbols()}`);
         ns.exit()
     }
-    ns.setTitle(`Stock Manager for ${targetstock}`);
-    if(!ns.stock.hasWSEAccount() || !ns.stock.hasTIXAPIAccess()) {
+    ns.setTitle(`Stock Manager for ${ns.stock.getOrganization(targetstock)}`);
+    if(!ns.stock.hasWSEAccount() || !ns.stock.hasTIXAPIAccess() || !ns.stock.has4SDataTIXAPI() || ns.stock.has4SData()) {
         if(!ns.stock.hasWSEAccount()) {
             yorn = await ns.prompt('Do you want to buy a WSE account?');
             if(yorn == true) {ns.stock.purchaseWseAccount()}
@@ -34,6 +34,22 @@ export async function main(ns) {
             if(yorn == true) {ns.stock.purchaseTixApi()}
             else {
                 ns.print(`${green}This scirpt requires TIX API access`);
+                ns.exit()
+            }
+        }
+        if(!ns.stock.has4SDataTIXAPI()) {
+            yorn = await ns.prompt('Do you want to buy 4S Data for TIX API?')
+            if(yorn == true) {ns.stock.purchase4SMarketDataTixApi()}
+            else {
+                ns.print(`${green}This scirpt requires 4S Data for TIX API`);
+                ns.exit()
+            }
+        }
+        if(!ns.stock.has4SData()) {
+            yorn = await ns.prompt('Do you want to buy 4S data access?')
+            if(yorn == true) {ns.stock.purchase4SMarketData()}
+            else {
+                ns.print(`${green}This scirpt requires 4S data access`);
                 ns.exit()
             }
         }
@@ -76,7 +92,7 @@ export async function main(ns) {
         if(ns.stock.getPrice(targetstock) != sharevalue) {
             sharevalue = ns.stock.getPrice(targetstock);
             if((sharevalue / buysharevalue) > 1.25 && (buysharevalue - sharevalue)*shares >> 100000) {
-                if(ns.stock.getSaleGain(targetstock, shares, position) > (money*0.1)) {
+                if(ns.stock.getSaleGain(targetstock, shares, position) > (money*0.01)) {
                     ns.tprint(`${green}Stock mannager for ${targetstock}\n Sold ${shares} shares at ${sharevalue} for a profit of ${ns.stock.getSaleGain(targetstock, shares, position)}`);
                     stockBnS(ns, targetstock, shares, position, "sell")
                     profit = (ns.stock.getPrice(targetstock)*shares) - 100000 - (buysharevalue*shares)
@@ -90,7 +106,7 @@ export async function main(ns) {
         if(shortshares == 0 && longshares == 0) {   
             
         }
-        await ns.sleep('50')
+        await ns.stock.nextUpdate();
     }
     return(ns.print('Script done, made it to money goal'))
 }
