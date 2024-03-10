@@ -58,7 +58,8 @@ export async function main(ns) {
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.hacking +1, ns.getPlayer().mults.hacking * ns.getBitNodeMultipliers().HackingLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.hacking, ns.getPlayer().mults.hacking * ns.getBitNodeMultipliers().HackingLevelMultiplier);
         persentage = ((ns.getPlayer().exp.hacking - expmin1) / (expplus1 - expmin1));
-        ns.print(`${orange}Hacking\t- ${ns.formatNumber(ns.getPlayer().skills.hacking, 0, 100000000)}\t${progressBar(persentage,14)}`);
+        if(ns.getPlayer().skills.hacking > 10000) {ns.print(`${orange}Hacking\t- ${ns.formatNumber(ns.getPlayer().skills.hacking, 0, 100000000)}${progressBar(persentage,14)}`);}
+        else {ns.print(`${orange}Hacking\t- ${ns.formatNumber(ns.getPlayer().skills.hacking, 0, 100000000)}\t${progressBar(persentage,14)}`);}
 
         expplus1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.strength +1, ns.getPlayer().mults.strength * ns.getBitNodeMultipliers().StrengthLevelMultiplier);
         expmin1 = ns.formulas.skills.calculateExp(ns.getPlayer().skills.strength, ns.getPlayer().mults.strength * ns.getBitNodeMultipliers().StrengthLevelMultiplier);
